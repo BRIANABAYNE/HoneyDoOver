@@ -7,11 +7,18 @@
 
 import Foundation
 
-struct HoneyDo {
+class HoneyDo: Codable {
     
-    let honeyDo: String
-    let uuid: UUID = UUID()
-    var isDone: Bool = false
+    var honeyDo: String
+    let uuid: UUID
+    var isDone: Bool
+    
+    
+    init(honeyDo: String, uuid: UUID = UUID(), isDone: Bool = false) {
+        self.honeyDo = honeyDo
+        self.uuid = uuid
+        self.isDone = isDone
+    }
     
 }
 
