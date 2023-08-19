@@ -12,7 +12,6 @@ struct HoneyToDo {
     let honeyToDo: String
     let uuid: UUID = UUID()
     let isFinished: Bool = false
-    
 }
 
 // MARK: - Extenstion
