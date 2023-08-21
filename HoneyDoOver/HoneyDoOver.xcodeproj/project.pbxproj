@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3A7320282A917A27007C7B45 /* HoneyToDoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7320272A917A27007C7B45 /* HoneyToDoViewModel.swift */; };
+		3A73202A2A93D0FE007C7B45 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7320292A93D0FE007C7B45 /* Constants.swift */; };
 		3A857BFE2A9156E500113387 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A857BFD2A9156E500113387 /* AppDelegate.swift */; };
 		3A857C002A9156E500113387 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A857BFF2A9156E500113387 /* SceneDelegate.swift */; };
 		3A857C052A9156E500113387 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A857C032A9156E500113387 /* Main.storyboard */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		3A7320272A917A27007C7B45 /* HoneyToDoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoneyToDoViewModel.swift; sourceTree = "<group>"; };
+		3A7320292A93D0FE007C7B45 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3A857BFA2A9156E500113387 /* HoneyDoOver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HoneyDoOver.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A857BFD2A9156E500113387 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A857BFF2A9156E500113387 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				3A857BFF2A9156E500113387 /* SceneDelegate.swift */,
 				3A857BFD2A9156E500113387 /* AppDelegate.swift */,
 				3A857C0B2A9156E600113387 /* Info.plist */,
+				3A7320292A93D0FE007C7B45 /* Constants.swift */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -192,6 +195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A857BFE2A9156E500113387 /* AppDelegate.swift in Sources */,
+				3A73202A2A93D0FE007C7B45 /* Constants.swift in Sources */,
 				3A857C002A9156E500113387 /* SceneDelegate.swift in Sources */,
 				3A857C192A915DBC00113387 /* HoneyToDoTableViewCell.swift in Sources */,
 				3AA2FAFE2A916D8F00DC74B0 /* HoneyToDo.swift in Sources */,
