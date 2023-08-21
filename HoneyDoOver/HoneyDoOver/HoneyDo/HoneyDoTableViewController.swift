@@ -18,6 +18,7 @@ class HoneyDoTableViewController: UITableViewController {
     // MARK: - Properties
     
     var viewModel: HoneyDoViewModel!
+    var honeyDos:HoneyDo
     
     
     // MARK: - LifeCycles
@@ -47,11 +48,11 @@ class HoneyDoTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "honeyCell", for: indexPath) as? HoneyDoTableViewCell
+       guard let cell = tableView.dequeueReusableCell(withIdentifier: "honeyCell", for: indexPath) as? HoneyDoTableViewCell
         else { return UITableViewCell() }
         
         let honeyDo = viewModel.honeyDos[indexPath.row]
-        cell.updateUI(honeydo:honeyDo)
+        cell.updateUI(honeyDo: honeyDo)
         
         return cell
     }
