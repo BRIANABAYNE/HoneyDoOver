@@ -45,7 +45,6 @@ class HoneyToDoTableViewController: UITableViewController {
         
         let honeyToDo = viewModel.honeyToDos[indexPath.row]
         cell.updateUI(honeyToDo: honeyToDo)
-        cell.delegate = self
         
         return cell
     }

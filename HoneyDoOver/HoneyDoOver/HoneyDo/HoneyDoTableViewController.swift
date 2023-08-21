@@ -72,17 +72,17 @@ class HoneyDoTableViewController: UITableViewController {
     // MARK: - Functions
     func update() {
         
-        honeyDoTextField.text = viewModel.honeyDos.honeyDo
+        honeyDoTextField.text = honeyDos.honeyDo
         
     }
     
     @objc func markAllDone() {
-        viewModel.honeyDos.isDone
+        viewModel.markAllDone()
         tableView.reloadData()
     }
     
     @objc func markAllNotDone() {
-        viewModel.honeyDos.isDone
+        viewModel.markAllNotDone()
         tableView.reloadData()
     }
     
@@ -100,7 +100,7 @@ class HoneyDoTableViewController: UITableViewController {
         alertController.addAction(noAction) // .destructive = red
         let yesAction = UIAlertAction(title: "Delete List", style: .destructive) { _ in
             print("Action Taken: Delete List")
-            #warning("Complete this")/// Finish this
+            /// Finish this
         }
         
         alertController.addAction(noAction)
@@ -109,22 +109,15 @@ class HoneyDoTableViewController: UITableViewController {
         
     }
     
-}
+} // end of VC
 
-// MARK: - Extensions - Extending the tableview controller, do the delegate. The employee doing the task that they were hired to do.
-extension HoneyDoTableViewController: TaskTableViewCellDelegate {
-    func taskButtonTapped(cell: HoneyDoTableViewCell) { // second place to hit in the data task for the protocol + delegate
+// MARK: - Extensions -Extending the tableview controller, do the delegate. The employee doing the task that they were hired to do.
+extension HoneyDoTableViewController: HoneyDoTableViewCellDelegate {
+    func honeyDoToggle(cell: HoneyDoTableViewCell) { // second place to hit in the data task for the protocol + delegate
        guard let indexPath = tableView.indexPath(for: cell) else { return }
         let honeyDo = viewModel.honeyDos[indexPath.row]
-        viewModel.honeyDos.toggleIsDone(honeyDo: honeyDo)
         viewModel.toggleIsDone(honeyDo: honeyDo)
-        cell.updateUI(honeyDo.honeyDo)
+        cell.updateUI(honeyDo: honeyDo)
     }
     
-    
-    
-    
-    
-    
-    
-} // end of VC
+}
