@@ -18,7 +18,7 @@ class HoneyDoTableViewController: UITableViewController {
     // MARK: - Properties
     
     var viewModel: HoneyDoViewModel!
-    var honeyDos:HoneyDo
+//    var honeyDos:[HoneyDo]? // this needs to be on the VM
     
     
     // MARK: - LifeCycles
@@ -27,20 +27,23 @@ class HoneyDoTableViewController: UITableViewController {
         viewModel = HoneyDoViewModel()
         
     }
-
-    
     // MARK: - Actions
     
     @IBAction func honeyDoButtonTapped(_ sender: Any) {
         // retriving the data
         guard let honeyDo = honeyDoTextField.text else  { return }
         viewModel.create(honeyDo: honeyDo)
+        honeyDoTextField.text = ""
         tableView.reloadData() // this will call numberOfRows and then cellForRowAt
     }
     
     
     // MARK: - Table view data source
     
+    override func numberOfSections(in tableView: UITableView) -> Int {
+    
+        return 1
+    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.honeyDos.count
@@ -60,10 +63,10 @@ class HoneyDoTableViewController: UITableViewController {
     // Swipe to delete
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
+            
+            let honeyDo = viewModel.honeyDos[indexPath.row]
+            viewModel.delete(honeyDo: honeyDo)
             tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
     }
     
@@ -72,7 +75,7 @@ class HoneyDoTableViewController: UITableViewController {
     // MARK: - Functions
     func update() {
         
-        honeyDoTextField.text = honeyDos.honeyDo
+//        honeyDoTextField.text = viewModel.honeyDo
         
     }
     

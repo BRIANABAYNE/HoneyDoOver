@@ -17,7 +17,7 @@ class HoneyDoViewModel {
     // MARK: - Functions
     
     func create(honeyDo: String) {
-        var honeyDo = HoneyDo(honeyDo: honeyDo)
+        let honeyDo = HoneyDo(honeyDo: honeyDo)
         honeyDos.append(honeyDo)
     }
     
@@ -28,6 +28,7 @@ class HoneyDoViewModel {
     
     func toggleIsDone(honeyDo: HoneyDo) {
         honeyDo.isDone.toggle()
+        
     }
     
     func markAllDone() {

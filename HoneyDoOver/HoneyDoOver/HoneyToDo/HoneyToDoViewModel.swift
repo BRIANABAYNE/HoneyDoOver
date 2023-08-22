@@ -27,6 +27,7 @@ class HoneyTodDoViewModel {
         honeyToDos.remove(at: index)
     }
     
+    
     func toggleIsFinished() {
         honeyToDos.forEach{ $0.isFinished = true}
     }
@@ -44,7 +45,7 @@ class HoneyTodDoViewModel {
     }
     
     
-    // MARK: - Persistence
+    // MARK: - Persistence 
     // writing
     func save() {
         guard let url = fileURL else {return}

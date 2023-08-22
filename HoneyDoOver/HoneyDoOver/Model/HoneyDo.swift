@@ -8,10 +8,11 @@
 import Foundation
 
 class HoneyDo: Codable {
+    // reading and writing 
     
     var honeyDo: String
     let uuid: UUID
-    var isDone: Bool
+    var isDone: Bool // for toggle 
     
     
     init(honeyDo: String, uuid: UUID = UUID(), isDone: Bool = false) {
@@ -23,7 +24,7 @@ class HoneyDo: Codable {
 }
 
 // MARK: - Extension
-
+// Creating a UUID every time a new HoneyDo is created - we also need this to delete 
 extension HoneyDo: Equatable {
     static func == (lhs: HoneyDo, rhs: HoneyDo) -> Bool {
         return lhs.uuid == rhs.uuid

@@ -21,11 +21,7 @@ class HoneyToDoTableViewController: UITableViewController {
     
     // MARK: - Actions
     
-    
-    @IBAction func honeyToDoButtonTapped(_ sender: Any) {
-    }
-    
-    
+
     // MARK: - Properties
     
     var viewModel:HoneyTodDoViewModel!

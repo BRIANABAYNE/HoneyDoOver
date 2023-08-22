@@ -15,32 +15,72 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="h3l-R8-eQj">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="HoneyDo" textAlignment="natural" minimumFontSize="17" id="VTO-LZ-0ou">
+                                    <rect key="frame" x="16" y="5" width="121" height="34"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R1H-qU-GbW">
+                                    <rect key="frame" x="291" y="4" width="75" height="35"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                    <connections>
+                                        <action selector="honeyDoButtonTapped:" destination="uTR-lk-8FZ" eventType="touchUpInside" id="Flg-Nl-Ex1"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemCyanColor"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="R1H-qU-GbW" secondAttribute="trailing" constant="27" id="3IT-Z1-H0c"/>
+                                <constraint firstItem="R1H-qU-GbW" firstAttribute="leading" secondItem="VTO-LZ-0ou" secondAttribute="trailing" constant="154" id="N19-nC-9g0"/>
+                                <constraint firstItem="R1H-qU-GbW" firstAttribute="top" secondItem="h3l-R8-eQj" secondAttribute="top" constant="4" id="Rxy-gB-Llw"/>
+                                <constraint firstItem="R1H-qU-GbW" firstAttribute="leading" secondItem="VTO-LZ-0ou" secondAttribute="trailing" constant="154" id="W1M-CU-a61"/>
+                                <constraint firstAttribute="bottom" secondItem="R1H-qU-GbW" secondAttribute="bottom" constant="5" id="mSu-JG-SsE"/>
+                            </constraints>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="honeyCell" rowHeight="108" id="bnv-5d-3eY" customClass="HoneyDoTableViewCell" customModule="HoneyDoOver" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="50" width="393" height="108"/>
+                                <rect key="frame" x="0.0" y="94" width="393" height="108"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bnv-5d-3eY" id="xyl-Nj-FnN">
                                     <rect key="frame" x="0.0" y="0.0" width="362.66666666666669" height="108"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7iT-ec-udP">
-                                            <rect key="frame" x="32" y="39" width="49" height="31"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7iT-ec-udP">
+                                            <rect key="frame" x="32" y="39" width="51" height="31"/>
                                             <color key="onTintColor" red="0.91376709938049316" green="0.32961320877075195" blue="0.84349352121353149" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="thumbTintColor" red="0.75602632761001587" green="0.69386845827102661" blue="0.93194001913070679" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <action selector="honeyDoToggleSwitched:" destination="bnv-5d-3eY" eventType="valueChanged" id="zxt-sb-6k5"/>
                                             </connections>
                                         </switch>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bAx-ny-kLs">
-                                            <rect key="frame" x="274" y="39" width="42" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bAx-ny-kLs">
+                                            <rect key="frame" x="276" y="39" width="42" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="42" id="ae6-rf-BEw"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.89990442991256714" green="0.078122563660144806" blue="0.95671302080154419" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="bAx-ny-kLs" secondAttribute="trailing" constant="36.670000000000002" id="2it-aB-CCC"/>
+                                        <constraint firstItem="bAx-ny-kLs" firstAttribute="leading" secondItem="7iT-ec-udP" secondAttribute="trailing" constant="195" id="75h-U8-n4i"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="bAx-ny-kLs" secondAttribute="bottom" constant="37" id="Io3-Vx-gNE"/>
+                                        <constraint firstItem="bAx-ny-kLs" firstAttribute="leading" secondItem="7iT-ec-udP" secondAttribute="trailing" constant="195" id="Kfq-0d-ze7"/>
+                                        <constraint firstItem="7iT-ec-udP" firstAttribute="leading" secondItem="xyl-Nj-FnN" secondAttribute="leadingMargin" constant="12" id="SMv-O1-Zzv"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="7iT-ec-udP" secondAttribute="bottom" constant="27" id="keZ-we-qbi"/>
+                                        <constraint firstItem="7iT-ec-udP" firstAttribute="top" secondItem="xyl-Nj-FnN" secondAttribute="topMargin" constant="28" id="tZr-1F-JVS"/>
+                                        <constraint firstItem="bAx-ny-kLs" firstAttribute="top" secondItem="xyl-Nj-FnN" secondAttribute="topMargin" constant="28" id="yIm-E7-qfE"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                 <connections>
                                     <outlet property="honeyDoLabel" destination="bAx-ny-kLs" id="5HA-B8-UFp"/>
                                     <outlet property="honeyDoToggle" destination="7iT-ec-udP" id="z45-Sw-vGG"/>
@@ -55,40 +95,14 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="3pn-AC-dBx">
                         <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="8sO-GG-9rD">
-                            <textField key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="HoneyDo" textAlignment="natural" minimumFontSize="17" id="wlt-vT-1zw">
-                                <rect key="frame" x="16" y="5" width="88" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="honeyToDoTextField:" destination="ma1-MK-xm6" eventType="editingDidEnd" id="RTc-my-xxp"/>
-                                </connections>
-                            </textField>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="UsC-IL-1qj">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="a3a-Gg-NwB">
-                                <rect key="frame" x="290" y="5" width="87" height="34.333333333333336"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
-                                <connections>
-                                    <action selector="honeyDoButtonTapped:" destination="uTR-lk-8FZ" eventType="touchUpInside" id="i3B-Tf-CEd"/>
-                                </connections>
-                            </button>
-                            <connections>
-                                <action selector="honeyDoButtonTapped:" destination="ma1-MK-xm6" id="wkK-9G-Jmw"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="honeyDoTextField" destination="wlt-vT-1zw" id="vnS-SM-tIn"/>
+                        <outlet property="honeyDoTextField" destination="VTO-LZ-0ou" id="3yB-Oa-KeJ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cc9-it-fFQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="ma1-MK-xm6" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-91" y="-175"/>
+            <point key="canvasLocation" x="-92.36641221374046" y="-175.35211267605635"/>
         </scene>
         <!--Honey To Do Table View Controller-->
         <scene sceneID="UZI-zd-uJx">
@@ -98,51 +112,53 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="KqI-eB-4uj">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UYz-Fx-NmW">
+                                    <rect key="frame" x="25" y="5" width="97" height="34"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="UYz-Fx-NmW" secondAttribute="bottom" constant="5" id="5gE-ZX-rwB"/>
+                                <constraint firstItem="UYz-Fx-NmW" firstAttribute="top" secondItem="KqI-eB-4uj" secondAttribute="top" constant="5" id="6Uh-zh-DiM"/>
+                                <constraint firstAttribute="trailing" secondItem="UYz-Fx-NmW" secondAttribute="trailing" constant="271" id="Cyx-TX-o7N"/>
+                                <constraint firstItem="UYz-Fx-NmW" firstAttribute="leading" secondItem="KqI-eB-4uj" secondAttribute="leading" constant="25" id="UJr-lI-TUu"/>
+                            </constraints>
+                        </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="tAW-MM-eUV">
-                                <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tAW-MM-eUV" id="yb7-Et-wir">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="69J-Wm-WjE">
-                                            <rect key="frame" x="37" y="4" width="97" height="34"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </textField>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GKa-NE-uHk">
-                                            <rect key="frame" x="298" y="4" width="75" height="35"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="Button"/>
-                                            <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                            <connections>
-                                                <action selector="honeyToDoButtonTapped:" destination="HQB-lY-bTT" eventType="touchUpInside" id="KpQ-Xi-Pia"/>
-                                            </connections>
-                                        </button>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="honeyToDo" rowHeight="127" id="ATB-KR-ZdI">
-                                <rect key="frame" x="0.0" y="93.666667938232422" width="393" height="127"/>
+                                <rect key="frame" x="0.0" y="94" width="393" height="127"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ATB-KR-ZdI" id="rnX-cD-Ivv" customClass="HoneyToDoTableViewCell" customModule="HoneyDoOver" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="127"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jpx-JV-KYg">
-                                            <rect key="frame" x="292" y="53" width="42" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jpx-JV-KYg">
+                                            <rect key="frame" x="294" y="53" width="42" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gF1-td-hjM">
-                                            <rect key="frame" x="49" y="43" width="49" height="31"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gF1-td-hjM">
+                                            <rect key="frame" x="49" y="43" width="51" height="31"/>
                                         </switch>
                                     </subviews>
+                                    <color key="backgroundColor" red="0.84008508920669556" green="0.90744513273239136" blue="0.33357936143875122" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstItem="Jpx-JV-KYg" firstAttribute="leading" secondItem="gF1-td-hjM" secondAttribute="trailing" constant="196" id="089-nU-fXJ"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Jpx-JV-KYg" secondAttribute="trailing" constant="37" id="5nV-ld-cHf"/>
+                                        <constraint firstItem="Jpx-JV-KYg" firstAttribute="leading" secondItem="gF1-td-hjM" secondAttribute="trailing" constant="196" id="9dn-VF-5kK"/>
+                                        <constraint firstItem="gF1-td-hjM" firstAttribute="top" secondItem="rnX-cD-Ivv" secondAttribute="topMargin" constant="32" id="Rri-Tp-vIc"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="gF1-td-hjM" secondAttribute="bottom" constant="42" id="S1Q-3U-0kN"/>
+                                        <constraint firstItem="gF1-td-hjM" firstAttribute="leading" secondItem="rnX-cD-Ivv" secondAttribute="leadingMargin" constant="29" id="ZEM-VU-770"/>
+                                        <constraint firstItem="Jpx-JV-KYg" firstAttribute="top" secondItem="rnX-cD-Ivv" secondAttribute="topMargin" constant="42" id="qvb-4E-WH9"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Jpx-JV-KYg" secondAttribute="bottom" constant="42" id="sXT-Rh-9ue"/>
+                                    </constraints>
                                     <connections>
                                         <outlet property="honeyToDoLabel" destination="Jpx-JV-KYg" id="sr7-tA-hgE"/>
                                         <outlet property="honeyToDoToggle" destination="gF1-td-hjM" id="dOV-Vu-YLQ"/>
@@ -155,14 +171,13 @@
                             <outlet property="delegate" destination="HQB-lY-bTT" id="zkQ-tZ-dpe"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="uOP-bN-7s5"/>
-                    <connections>
-                        <outlet property="honeyToDoTextField" destination="69J-Wm-WjE" id="2hg-eY-XFB"/>
-                    </connections>
+                    <navigationItem key="navigationItem" id="uOP-bN-7s5">
+                        <nil key="title"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B2c-lA-JL3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="703" y="-175"/>
+            <point key="canvasLocation" x="745.80152671755718" y="-175.35211267605635"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NMr-Pw-ohU">
@@ -184,8 +199,17 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemCyanColor">
+            <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

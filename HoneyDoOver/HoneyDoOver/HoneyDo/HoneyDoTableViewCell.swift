@@ -34,6 +34,8 @@ class HoneyDoTableViewCell: UITableViewCell {
     // MARK: - Actions
     @IBAction func honeyDoToggleSwitched(_ sender: Any) {
         delegate?.honeyDoToggle(cell: self)
+        presentNewMessageAlert()
+        
     }
     
 
