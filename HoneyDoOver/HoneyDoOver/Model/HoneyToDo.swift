@@ -8,7 +8,7 @@
 import Foundation
 
 class HoneyToDo: Codable {
-    // reading and writing
+    // reading and writing - Need codeable for persistance 
     let honeyToDo: String
     let uuid: UUID
     var isFinished: Bool // for toggle 

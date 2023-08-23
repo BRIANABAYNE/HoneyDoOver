@@ -13,6 +13,10 @@ class HoneyTodDoViewModel {
     // MARK: - Properties
     
     var honeyToDos: [HoneyToDo] = []
+    var completedHoneyToDo: [HoneyToDo] {
+        honeyToDos.filter({!$0.isFinished})
+    }
+    
     
     init() {
         load()
@@ -33,9 +37,10 @@ class HoneyTodDoViewModel {
         save()
     }
     
-    
+    //
     func toggleIsFinished(honeyToDo: HoneyToDo) {
         honeyToDos.forEach{ $0.isFinished = true}
+        save()
     }
     
 //    func toggleFinished() {

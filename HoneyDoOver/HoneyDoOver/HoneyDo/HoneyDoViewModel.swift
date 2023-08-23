@@ -12,7 +12,9 @@ class HoneyDoViewModel {
     
     // MARK: - Properties
     var honeyDos: [HoneyDo] = []
-    
+    var pendingHoneyDos: [HoneyDo] {
+        honeyDos.filter({!$0.isDone})
+    }
     init() {
         load()
     }
@@ -31,10 +33,10 @@ class HoneyDoViewModel {
         honeyDos.remove(at: index)
         save()
     }
-    
+    // This is change the status of the toggle / takse whatever the current bool is and does the opposite / Toggle is the boolan variable value.
     func toggleIsDone(honeyDo: HoneyDo) {
         honeyDo.isDone.toggle()
-        
+        save() // dont forget the save
     }
     
     func markAllDone() {

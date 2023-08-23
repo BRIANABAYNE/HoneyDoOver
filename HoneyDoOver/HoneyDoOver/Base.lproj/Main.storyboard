@@ -25,23 +25,17 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R1H-qU-GbW">
-                                    <rect key="frame" x="364" y="4" width="2" height="35"/>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i51-lP-iaY">
+                                    <rect key="frame" x="299" y="4" width="75" height="35"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="filled" title="Button"/>
                                     <connections>
-                                        <action selector="honeyDoButtonTapped:" destination="uTR-lk-8FZ" eventType="touchUpInside" id="Flg-Nl-Ex1"/>
+                                        <action selector="honeyDoButtonTapped:" destination="uTR-lk-8FZ" eventType="touchUpInside" id="LS5-Fh-pa3"/>
                                     </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemCyanColor"/>
-                            <constraints>
-                                <constraint firstAttribute="trailing" secondItem="R1H-qU-GbW" secondAttribute="trailing" constant="27" id="3IT-Z1-H0c"/>
-                                <constraint firstItem="R1H-qU-GbW" firstAttribute="leading" secondItem="VTO-LZ-0ou" secondAttribute="trailing" constant="154" id="N19-nC-9g0"/>
-                                <constraint firstItem="R1H-qU-GbW" firstAttribute="top" secondItem="h3l-R8-eQj" secondAttribute="top" constant="4" id="Rxy-gB-Llw"/>
-                                <constraint firstItem="R1H-qU-GbW" firstAttribute="leading" secondItem="VTO-LZ-0ou" secondAttribute="trailing" constant="154" id="W1M-CU-a61"/>
-                                <constraint firstAttribute="bottom" secondItem="R1H-qU-GbW" secondAttribute="bottom" constant="5" id="mSu-JG-SsE"/>
-                            </constraints>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="honeyCell" rowHeight="108" id="bnv-5d-3eY" customClass="HoneyDoTableViewCell" customModule="HoneyDoOver" customModuleProvider="target">
@@ -59,30 +53,22 @@
                                                 <action selector="honeyDoToggleSwitched:" destination="bnv-5d-3eY" eventType="valueChanged" id="zxt-sb-6k5"/>
                                             </connections>
                                         </switch>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bAx-ny-kLs">
-                                            <rect key="frame" x="276" y="39" width="42" height="21"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="42" id="ae6-rf-BEw"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.89990442991256714" green="0.078122563660144806" blue="0.95671302080154419" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YyL-6T-SIP">
+                                            <rect key="frame" x="245" y="39" width="97" height="34"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="bAx-ny-kLs" secondAttribute="trailing" constant="36.670000000000002" id="2it-aB-CCC"/>
-                                        <constraint firstItem="bAx-ny-kLs" firstAttribute="leading" secondItem="7iT-ec-udP" secondAttribute="trailing" constant="195" id="75h-U8-n4i"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="bAx-ny-kLs" secondAttribute="bottom" constant="37" id="Io3-Vx-gNE"/>
-                                        <constraint firstItem="bAx-ny-kLs" firstAttribute="leading" secondItem="7iT-ec-udP" secondAttribute="trailing" constant="195" id="Kfq-0d-ze7"/>
                                         <constraint firstItem="7iT-ec-udP" firstAttribute="leading" secondItem="xyl-Nj-FnN" secondAttribute="leadingMargin" constant="12" id="SMv-O1-Zzv"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="7iT-ec-udP" secondAttribute="bottom" constant="27" id="keZ-we-qbi"/>
                                         <constraint firstItem="7iT-ec-udP" firstAttribute="top" secondItem="xyl-Nj-FnN" secondAttribute="topMargin" constant="28" id="tZr-1F-JVS"/>
-                                        <constraint firstItem="bAx-ny-kLs" firstAttribute="top" secondItem="xyl-Nj-FnN" secondAttribute="topMargin" constant="28" id="yIm-E7-qfE"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
-                                    <outlet property="honeyDoLabel" destination="bAx-ny-kLs" id="5HA-B8-UFp"/>
+                                    <outlet property="honeyDoTextField" destination="YyL-6T-SIP" id="CNk-29-gdG"/>
                                     <outlet property="honeyDoToggle" destination="7iT-ec-udP" id="z45-Sw-vGG"/>
                                     <segue destination="HQB-lY-bTT" kind="show" id="h8N-rt-PXB"/>
                                 </connections>
@@ -147,15 +133,18 @@
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="127"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jpx-JV-KYg">
-                                            <rect key="frame" x="294" y="53" width="42" height="21"/>
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gF1-td-hjM">
+                                            <rect key="frame" x="57" y="48" width="51" height="31"/>
+                                            <connections>
+                                                <action selector="honeyToDoToggleSwitched:" destination="ATB-KR-ZdI" eventType="valueChanged" id="Sw6-YX-Tqp"/>
+                                            </connections>
+                                        </switch>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jpx-JV-KYg">
+                                            <rect key="frame" x="207" y="53" width="42" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gF1-td-hjM">
-                                            <rect key="frame" x="49" y="43" width="51" height="31"/>
-                                        </switch>
                                     </subviews>
                                     <color key="backgroundColor" red="0.84008508920669556" green="0.90744513273239136" blue="0.33357936143875122" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
@@ -219,9 +208,6 @@
         </systemColor>
         <systemColor name="systemCyanColor">
             <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

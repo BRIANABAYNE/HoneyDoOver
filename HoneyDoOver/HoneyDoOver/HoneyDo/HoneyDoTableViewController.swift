@@ -25,7 +25,7 @@ class HoneyDoTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = HoneyDoViewModel()
-        
+    
     }
     // MARK: - Actions
     
@@ -41,7 +41,7 @@ class HoneyDoTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.honeyDos.count
+        return viewModel.pendingHoneyDos.count
     }
     
     
@@ -49,8 +49,9 @@ class HoneyDoTableViewController: UITableViewController {
        guard let cell = tableView.dequeueReusableCell(withIdentifier: "honeyCell", for: indexPath) as? HoneyDoTableViewCell
         else { return UITableViewCell() }
         
-        let honeyDo = viewModel.honeyDos[indexPath.row]
+        let honeyDo = viewModel.pendingHoneyDos[indexPath.row]
         cell.updateUI(honeyDo: honeyDo)
+        cell.delegate = self // assigning the task
         
         return cell
     }
@@ -59,47 +60,41 @@ class HoneyDoTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             
-            let honeyDo = viewModel.honeyDos[indexPath.row]
+            let honeyDo = viewModel.pendingHoneyDos[indexPath.row]
             viewModel.delete(honeyDo: honeyDo)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
-    
-    
-    
-    // MARK: - Functions
-  
-//    func update() {
+
 //
-////        honeyDoTextField.text = viewModel.honeyDo
+//    @objc func markAllDone() {
+//        viewModel.markAllDone()
+//        tableView.reloadData()
+//    }
+//
+//    @objc func markAllNotDone() {
+//        viewModel.markAllNotDone()
+//        tableView.reloadData()
+//    }
+    
+//    func notificationCenter() {
+//        NotificationCenter.default.addObserver(self, selector: #selector(markAllDone), name: Constants.Notifications.markAllDone, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(markAllNotDone), name: Constants.Notifications.markAllDone, object: nil)
 //
 //    }
     
-    @objc func markAllDone() {
-        viewModel.markAllDone()
-        tableView.reloadData()
-    }
-    
-    @objc func markAllNotDone() {
-        viewModel.markAllNotDone()
-        tableView.reloadData()
-    }
-    
-    func notificationCenter() {
-        NotificationCenter.default.addObserver(self, selector: #selector(markAllDone), name: Constants.Notifications.markAllDone, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(markAllNotDone), name: Constants.Notifications.markAllDone, object: nil)
-        
-    }
-    
-    func presentNewMessageAlert() {
+    func presentNewMessageAlert(honeyDo: HoneyDo) {
         let alertController = UIAlertController(title: "All Done?" , message: "Would you like to delete this Honey-Do?", preferredStyle: .alert)
         let noAction = UIAlertAction(title: "Dismiss", style: .default) { _ in
             print("Action Taken: Dissmiss") // .default = blue
         }
         alertController.addAction(noAction) // .destructive = red
-        let yesAction = UIAlertAction(title: "Delete List", style: .destructive) { _ in
+        let yesAction = UIAlertAction(title: "Delete HoneyDo", style: .destructive) { _ in
             print("Action Taken: Delete List")
-            /// Finish this
+            self.viewModel.toggleIsDone(honeyDo: honeyDo) // will toggle
+//            cell.updateUI(honeyDo: honeyDo) // relfect what the cell should display now
+            self.tableView.reloadData()
+            
         }
         
         alertController.addAction(noAction)
@@ -114,9 +109,9 @@ class HoneyDoTableViewController: UITableViewController {
 extension HoneyDoTableViewController: HoneyDoTableViewCellDelegate {
     func honeyDoToggle(cell: HoneyDoTableViewCell) { // second place to hit in the data task for the protocol + delegate
        guard let indexPath = tableView.indexPath(for: cell) else { return }
-        let honeyDo = viewModel.honeyDos[indexPath.row]
-        viewModel.toggleIsDone(honeyDo: honeyDo)
-        cell.updateUI(honeyDo: honeyDo)
+        let honeyDo = viewModel.pendingHoneyDos[indexPath.row]
+      presentNewMessageAlert(honeyDo: honeyDo)
+    
     }
     
 }

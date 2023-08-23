@@ -36,14 +36,15 @@ class HoneyToDoTableViewCell: UITableViewCell {
     func updateUI(honeyToDo: HoneyToDo) {
         honeyToDoToggle.isOn = honeyToDo.isFinished
         honeyToDoLabel.text = honeyToDo.honeyToDo
+       
     }
-    
     
     // MARK: - Actions
     
     
     @IBAction func honeyToDoToggleSwitched(_ sender: Any) {
         delegate?.honeyToDoSwitch(cell: self)
+        
     }
 
 
