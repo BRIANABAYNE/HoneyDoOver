@@ -20,13 +20,13 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="HoneyDo" textAlignment="natural" minimumFontSize="17" id="VTO-LZ-0ou">
-                                    <rect key="frame" x="16" y="5" width="121" height="34"/>
+                                    <rect key="frame" x="16" y="5" width="194" height="34"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R1H-qU-GbW">
-                                    <rect key="frame" x="291" y="4" width="75" height="35"/>
+                                    <rect key="frame" x="364" y="4" width="2" height="35"/>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="filled" title="Button"/>
                                     <connections>
@@ -121,6 +121,15 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6VG-N0-ylP">
+                                    <rect key="frame" x="286" y="4" width="75" height="35"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                    <connections>
+                                        <action selector="honeyToDoButtonTapped:" destination="HQB-lY-bTT" eventType="touchUpInside" id="FWO-Ji-wrI"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                             <constraints>
@@ -131,10 +140,10 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="honeyToDo" rowHeight="127" id="ATB-KR-ZdI">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="honeyToDo" rowHeight="127" id="ATB-KR-ZdI" customClass="HoneyToDoTableViewCell" customModule="HoneyDoOver" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="94" width="393" height="127"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ATB-KR-ZdI" id="rnX-cD-Ivv" customClass="HoneyToDoTableViewCell" customModule="HoneyDoOver" customModuleProvider="target">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ATB-KR-ZdI" id="rnX-cD-Ivv">
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="127"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
@@ -159,11 +168,11 @@
                                         <constraint firstItem="Jpx-JV-KYg" firstAttribute="top" secondItem="rnX-cD-Ivv" secondAttribute="topMargin" constant="42" id="qvb-4E-WH9"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="Jpx-JV-KYg" secondAttribute="bottom" constant="42" id="sXT-Rh-9ue"/>
                                     </constraints>
-                                    <connections>
-                                        <outlet property="honeyToDoLabel" destination="Jpx-JV-KYg" id="sr7-tA-hgE"/>
-                                        <outlet property="honeyToDoToggle" destination="gF1-td-hjM" id="dOV-Vu-YLQ"/>
-                                    </connections>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="honeyToDoLabel" destination="Jpx-JV-KYg" id="QEY-2p-qhI"/>
+                                    <outlet property="honeyToDoToggle" destination="gF1-td-hjM" id="d8m-2L-CUL"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -174,6 +183,9 @@
                     <navigationItem key="navigationItem" id="uOP-bN-7s5">
                         <nil key="title"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="honeyToDoTextField" destination="UYz-Fx-NmW" id="k6x-wA-g4f"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B2c-lA-JL3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -13,17 +13,23 @@ class HoneyDoViewModel {
     // MARK: - Properties
     var honeyDos: [HoneyDo] = []
     
+    init() {
+        load()
+    }
+    
     
     // MARK: - Functions
     
     func create(honeyDo: String) {
         let honeyDo = HoneyDo(honeyDo: honeyDo)
         honeyDos.append(honeyDo)
+        save()
     }
     
     func delete(honeyDo: HoneyDo) {
         guard let index = honeyDos.firstIndex(of: honeyDo) else { return }
         honeyDos.remove(at: index)
+        save()
     }
     
     func toggleIsDone(honeyDo: HoneyDo) {
@@ -67,5 +73,6 @@ class HoneyDoViewModel {
         let url = documentsDirectory.appendingPathComponent("honeyDo.json")
         return url
     }
+
     
 } // end of ViewModel

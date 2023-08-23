@@ -40,11 +40,6 @@ class HoneyDoTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-    
-        return 1
-    }
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.honeyDos.count
     }
@@ -73,11 +68,12 @@ class HoneyDoTableViewController: UITableViewController {
     
     
     // MARK: - Functions
-    func update() {
-        
-//        honeyDoTextField.text = viewModel.honeyDo
-        
-    }
+  
+//    func update() {
+//
+////        honeyDoTextField.text = viewModel.honeyDo
+//
+//    }
     
     @objc func markAllDone() {
         viewModel.markAllDone()

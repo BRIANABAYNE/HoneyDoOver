@@ -21,7 +21,14 @@ class HoneyToDoTableViewController: UITableViewController {
     
     // MARK: - Actions
     
-
+    @IBAction func honeyToDoButtonTapped(_ sender: Any) {
+        guard let honeyToDo = honeyToDoTextField.text else { return }
+        viewModel.create(honeyToDo: honeyToDo)
+        honeyToDoTextField.text = ""
+        tableView.reloadData()
+    }
+    
+    
     // MARK: - Properties
     
     var viewModel:HoneyTodDoViewModel!
@@ -55,5 +62,14 @@ class HoneyToDoTableViewController: UITableViewController {
         
         
         
+    }
+} // end of VC
+
+extension HoneyToDoTableViewController: HoneyToDoTableViewCellDelegate {
+    func honeyToDoSwitch(cell: HoneyToDoTableViewCell) {
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        let honeyToDo = viewModel.honeyToDos[indexPath.row]
+        viewModel.toggleIsFinished(honeyToDo: honeyToDo)
+        cell.updateUI(honeyToDo: honeyToDo)
     }
 }

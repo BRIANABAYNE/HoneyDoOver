@@ -27,14 +27,17 @@ class HoneyDoTableViewCell: UITableViewCell {
         // Initialization code
     }
     
+    
+    
     // MARK: - Properties
     weak var delegate: HoneyDoTableViewCellDelegate?
+    var viewModel: HoneyDoViewModel!
     
     
     // MARK: - Actions
     @IBAction func honeyDoToggleSwitched(_ sender: Any) {
         delegate?.honeyDoToggle(cell: self)
-        presentNewMessageAlert()
+//        presentNewMessageAlert()
         
     }
     

@@ -14,34 +14,40 @@ class HoneyTodDoViewModel {
     
     var honeyToDos: [HoneyToDo] = []
     
+    init() {
+        load()
+    }
+    
     // MARK: - Functions
     
     func create(honeyToDo: String) {
         let honeyToDo = HoneyToDo(honeyToDo: honeyToDo)
         honeyToDos.append(honeyToDo)
+        save()
     }
     
     
     func delete(honeyToDo: HoneyToDo) {
         guard let index = honeyToDos.firstIndex(of: honeyToDo) else { return }
         honeyToDos.remove(at: index)
+        save()
     }
     
     
-    func toggleIsFinished() {
+    func toggleIsFinished(honeyToDo: HoneyToDo) {
         honeyToDos.forEach{ $0.isFinished = true}
     }
     
-    func toggleFinished() {
-        honeyToDos.forEach{ $0.isFinished = false}
-    }
+//    func toggleFinished() {
+//        honeyToDos.forEach{ $0.isFinished = false}
+//    }
     
     func markAllFinished() {
-        
+        honeyToDos.forEach {$0.isFinished = true}
     }
     
     func markAllNotFinished() {
-        
+        honeyToDos.forEach { $0.isFinished = false }
     }
     
     
@@ -74,7 +80,6 @@ class HoneyTodDoViewModel {
         let url = documentsDirectory.appendingPathComponent("honeyToDo.json")
         return url
     }
-    
-    
+
     
 } // end of viewModel
