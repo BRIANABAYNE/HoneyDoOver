@@ -11,25 +11,19 @@ import Foundation
 class TaskController {
     
     
-    
+    // MARK: - Properties - SST
     static let shared = TaskController()
-    
-    
+    // Singlton
     var mormonTask: [TaskToDo] = []
     
-   // MARK: - Crud Functions for Task
+   // - init for the class + Calling the load for JSON
+    init() {
+        load()
+    }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    // MARK: - Crub Functions for TaskToDo
-    
+    // MARK: - Crud Functions for Task
+
+
     func createTask(taskName: String) {
         let taskToDo = TaskToDo(taskToDoName: taskName)
         mormonTask.append(taskToDo)
@@ -39,14 +33,37 @@ class TaskController {
     func deleteTask(doDelete: TaskToDo) {
         guard let path = mormonTask.firstIndex(of: doDelete) else { return }
         mormonTask.remove(at: path)
+        save()
+    }
+    
+    // MARK: - Crub Functions for TaskToDo
+    
+    func createTaskToComplete(toComplete: TaskToDo, taskItem: String ) {
+        let dadTask = Task(taskName: taskItem)
+        toComplete.taskToDos.append(dadTask)
+        save()
+    }
+    
+    func updateTask(task: Task, newTask: String) {
+        task.taskName = newTask
+        save()
+    }
+    
+    func deleteCompeletedTask(task: Task, toDoTasks: TaskToDo) {
+        guard let index = toDoTasks.taskToDos.firstIndex(of: task) else { return }
+        toDoTasks.taskToDos.remove(at: index)
+        save()
+        
     }
     
     // MARK: - Toggle
-    func toggleTaskToFinish(for task: TaskToDo) {
-        TaskToDo.forEach{ $0.isFinished = true }
+    func toggleTaskToFinish(for task: Task) {
+        task.isDone.toggle()
     }
     
-    
+    func toggleIsCompleted(taskToDo: TaskToDo) {
+        taskToDo.isFinished.toggle()
+    }
     
     
     
@@ -56,7 +73,7 @@ class TaskController {
     func save() {
         guard let url = fileURL else {return}
         do {
-            let data = try JSONEncoder().encode(TaskToDo)
+            let data = try JSONEncoder().encode(mormonTask)
             try data.write(to: url)
         } catch {
             print(error)
