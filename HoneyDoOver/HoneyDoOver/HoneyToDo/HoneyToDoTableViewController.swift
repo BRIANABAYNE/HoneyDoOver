@@ -9,6 +9,8 @@ import UIKit
 
 class HoneyToDoTableViewController: UITableViewController {
     
+    
+    // Adding the outlet of the textField here since it lives on the tableView and not the cell.
     // MARK: - Outlets
     @IBOutlet weak var honeyToDoTextField: UITextField!
     
@@ -16,28 +18,29 @@ class HoneyToDoTableViewController: UITableViewController {
     // MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = HoneyTodDoViewModel()
+        viewModel = HoneyToViewController()
+
+      notificationCenter()
     }
     
     // MARK: - Actions
-    
+    // Button tapped
     @IBAction func honeyToDoButtonTapped(_ sender: Any) {
-        guard let honeyToDo = honeyToDoTextField.text else { return }
-        viewModel.create(honeyToDo: honeyToDo)
+        guard let honeyToDo = honeyToDoTextField.text else { return } // guarding this, if we cant
+        viewModel.createTask(for: honeyToDo, task: taskToDo)
         honeyToDoTextField.text = ""
         tableView.reloadData()
     }
 
     // MARK: - Properties
     
-    var viewModel:HoneyTodDoViewModel!
+    var viewModel:HoneyToViewController!
     
     
     // MARK: - Table view data source
-    
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.completedHoneyToDo.count
-        
+        return viewModel.honeyToDos.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -45,7 +48,7 @@ class HoneyToDoTableViewController: UITableViewController {
         HoneyToDoTableViewCell else { return UITableViewCell() }
         
         
-        let honeyToDo = viewModel.completedHoneyToDo[indexPath.row]
+        let honeyToDo = viewModel.honeyToDos[indexPath.row]
         cell.updateUI(honeyToDo: honeyToDo)
         cell.delegate = self
         return cell
@@ -54,7 +57,7 @@ class HoneyToDoTableViewController: UITableViewController {
     // swip to delete
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let honeyToDo = viewModel.completedHoneyToDo[indexPath.row]
+            let honeyToDo = viewModel.honeyToDos[indexPath.row]
             viewModel.delete(honeyToDo: honeyToDo)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
@@ -67,25 +70,27 @@ class HoneyToDoTableViewController: UITableViewController {
     }
     
     @objc func markAllNotFinished() {
-        viewModel.markAllFinished()
+        viewModel.markAllNotFinished()
         tableView.reloadData()
     }
     
     func notificationCenter() {
-        NotificationCenter.default.addObserver(self, selector: #selector(markAllFinished), name: Constants.Notifications.markAllDone, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(markAllNotFinished), name: Constants.Notifications.markAllDone, object: nil)
+      NotificationCenter.default.addObserver(self, selector: #selector(markAllFinished), name: Constants.Notifications.markAllDone, object: nil)
+     NotificationCenter.default.addObserver(self, selector: #selector(markAllNotFinished), name: Constants.Notifications.markALLNotDone, object: nil)
         
     }
     
-    func presentNextMessageAlert(honeytoDo: HoneyToDo) {
+    func presentNextMessageAlert(honeyToDo: TaskToDo) {
         
         let alertController = UIAlertController(title: "All Done?" , message: "What do you want to do?", preferredStyle: .alert)
-        let noAction = UIAlertAction(title: "Clear HoneyDo", style: .default) { _ in
+        let noAction = UIAlertAction(title: "Keep HoneyDo", style: .default) { _ in
             print("Action Taken: Dissmiss") // .default = blue
         }
         alertController.addAction(noAction) // .destructive = red
         let yesAction = UIAlertAction(title: "Delete HoneyDo", style: .destructive) { _ in
             print("Action Taken: Delete List")
+            self.viewModel.toggleIsFinished(honeyToDo: honeyToDo)
+            
 //            cell.updateUI(honeyDo: honeyDo) // relfect what the cell should display now
             self.tableView.reloadData()
         }
@@ -93,8 +98,7 @@ class HoneyToDoTableViewController: UITableViewController {
         alertController.addAction(noAction)
         alertController.addAction(yesAction)
         self.present(alertController, animated: true)
-//        self.viewModel.toggleIsFinished(honeyToDo: honeytoDo)
-//        self.markAllNotFinished()     // will toggle
+//      self.markAllNotFinished()     // will toggle
     }
     
 } // end of VC
@@ -103,11 +107,20 @@ extension HoneyToDoTableViewController: HoneyToDoTableViewCellDelegate {
     func honeyToDoSwitch(cell: HoneyToDoTableViewCell) {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         let honeyToDo = viewModel.honeyToDos[indexPath.row]
-       viewModel.toggleIsFinished(honeyToDo: honeyToDo)
-//        markAllFinished()
-        presentNextMessageAlert(honeytoDo: honeyToDo)
-       cell.updateUI(honeyToDo: honeyToDo)
+      self.viewModel.toggleIsFinished(honeyToDo: honeyToDo)
+//        self.viewModel.markAllFinished()
+        cell.updateUI(honeyToDo: honeyToDo)
         
+      for honeyToDo in viewModel.honeyToDos {
+         if honeyToDo.isFinished != true {
+             return
+          }
+        }
+//        viewModel.honeyToDos.isFinished = true
+       presentNextMessageAlert(honeyToDo: honeyToDo )
+        
+//      markAllFinished()
+            
+        }
         
     }
-}

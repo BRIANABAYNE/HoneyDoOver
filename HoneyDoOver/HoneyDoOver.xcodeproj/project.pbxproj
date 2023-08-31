@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A560F3C2AA030320056A7ED /* TaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A560F3B2AA030320056A7ED /* TaskController.swift */; };
 		3A7320282A917A27007C7B45 /* HoneyToDoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7320272A917A27007C7B45 /* HoneyToDoViewModel.swift */; };
 		3A73202A2A93D0FE007C7B45 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7320292A93D0FE007C7B45 /* Constants.swift */; };
 		3A857BFE2A9156E500113387 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A857BFD2A9156E500113387 /* AppDelegate.swift */; };
@@ -18,12 +19,13 @@
 		3A857C162A915D4E00113387 /* HoneyDoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A857C152A915D4E00113387 /* HoneyDoTableViewCell.swift */; };
 		3A857C192A915DBC00113387 /* HoneyToDoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A857C182A915DBC00113387 /* HoneyToDoTableViewCell.swift */; };
 		3A857C1B2A915DD900113387 /* HoneyToDoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A857C1A2A915DD900113387 /* HoneyToDoTableViewController.swift */; };
-		3AA2FAFC2A916D7600DC74B0 /* HoneyDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA2FAFB2A916D7600DC74B0 /* HoneyDo.swift */; };
-		3AA2FAFE2A916D8F00DC74B0 /* HoneyToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA2FAFD2A916D8F00DC74B0 /* HoneyToDo.swift */; };
+		3AA2FAFC2A916D7600DC74B0 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA2FAFB2A916D7600DC74B0 /* Task.swift */; };
+		3AA2FAFE2A916D8F00DC74B0 /* TaskToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA2FAFD2A916D8F00DC74B0 /* TaskToDo.swift */; };
 		3AA2FB002A91706C00DC74B0 /* HoneyDoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA2FAFF2A91706C00DC74B0 /* HoneyDoViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A560F3B2AA030320056A7ED /* TaskController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskController.swift; sourceTree = "<group>"; };
 		3A7320272A917A27007C7B45 /* HoneyToDoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoneyToDoViewModel.swift; sourceTree = "<group>"; };
 		3A7320292A93D0FE007C7B45 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3A857BFA2A9156E500113387 /* HoneyDoOver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HoneyDoOver.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -37,8 +39,8 @@
 		3A857C152A915D4E00113387 /* HoneyDoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoneyDoTableViewCell.swift; sourceTree = "<group>"; };
 		3A857C182A915DBC00113387 /* HoneyToDoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoneyToDoTableViewCell.swift; sourceTree = "<group>"; };
 		3A857C1A2A915DD900113387 /* HoneyToDoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoneyToDoTableViewController.swift; sourceTree = "<group>"; };
-		3AA2FAFB2A916D7600DC74B0 /* HoneyDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoneyDo.swift; sourceTree = "<group>"; };
-		3AA2FAFD2A916D8F00DC74B0 /* HoneyToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoneyToDo.swift; sourceTree = "<group>"; };
+		3AA2FAFB2A916D7600DC74B0 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		3AA2FAFD2A916D8F00DC74B0 /* TaskToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskToDo.swift; sourceTree = "<group>"; };
 		3AA2FAFF2A91706C00DC74B0 /* HoneyDoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoneyDoViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -110,6 +112,7 @@
 				3A857C182A915DBC00113387 /* HoneyToDoTableViewCell.swift */,
 				3A857C1A2A915DD900113387 /* HoneyToDoTableViewController.swift */,
 				3A7320272A917A27007C7B45 /* HoneyToDoViewModel.swift */,
+				3A560F3B2AA030320056A7ED /* TaskController.swift */,
 			);
 			path = HoneyToDo;
 			sourceTree = "<group>";
@@ -117,8 +120,8 @@
 		3AA2FAFA2A916D6200DC74B0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				3AA2FAFB2A916D7600DC74B0 /* HoneyDo.swift */,
-				3AA2FAFD2A916D8F00DC74B0 /* HoneyToDo.swift */,
+				3AA2FAFB2A916D7600DC74B0 /* Task.swift */,
+				3AA2FAFD2A916D8F00DC74B0 /* TaskToDo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -198,12 +201,13 @@
 				3A73202A2A93D0FE007C7B45 /* Constants.swift in Sources */,
 				3A857C002A9156E500113387 /* SceneDelegate.swift in Sources */,
 				3A857C192A915DBC00113387 /* HoneyToDoTableViewCell.swift in Sources */,
-				3AA2FAFE2A916D8F00DC74B0 /* HoneyToDo.swift in Sources */,
+				3AA2FAFE2A916D8F00DC74B0 /* TaskToDo.swift in Sources */,
 				3A857C162A915D4E00113387 /* HoneyDoTableViewCell.swift in Sources */,
 				3AA2FB002A91706C00DC74B0 /* HoneyDoViewModel.swift in Sources */,
 				3A7320282A917A27007C7B45 /* HoneyToDoViewModel.swift in Sources */,
 				3A857C142A915D2E00113387 /* HoneyDoTableViewController.swift in Sources */,
-				3AA2FAFC2A916D7600DC74B0 /* HoneyDo.swift in Sources */,
+				3AA2FAFC2A916D7600DC74B0 /* Task.swift in Sources */,
+				3A560F3C2AA030320056A7ED /* TaskController.swift in Sources */,
 				3A857C1B2A915DD900113387 /* HoneyToDoTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

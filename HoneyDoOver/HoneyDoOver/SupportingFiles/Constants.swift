@@ -10,7 +10,7 @@ import Foundation
 struct Constants {
     
     struct Notifications {
-        static let markAllDone = Notification.Name("markALlDone")
-        static let markALLNotDone = Notification.Name("markAllNotDone")
+        static let markAllDone = Notification.Name("markAllFinish")
+        static let markALLNotDone = Notification.Name("markAllNotFinish")
     }
 }

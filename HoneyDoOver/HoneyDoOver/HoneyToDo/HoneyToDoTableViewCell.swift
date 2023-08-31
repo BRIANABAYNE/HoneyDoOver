@@ -6,9 +6,6 @@
 //
 
 import UIKit
-
-
-
 // MARK: - Protocol
 protocol HoneyToDoTableViewCellDelegate: AnyObject {
     func honeyToDoSwitch(cell:HoneyToDoTableViewCell)
@@ -18,14 +15,13 @@ class HoneyToDoTableViewCell: UITableViewCell {
 
     
     // MARK: - Outlets
-    
-    @IBOutlet weak var honeyToDoToggle: UISwitch!
-    @IBOutlet weak var honeyToDoLabel: UILabel!
+    @IBOutlet weak var honeyToDoButton: UIButton!
+    @IBOutlet weak var honeyToDoLabel1: UILabel!
     
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+      
     }
 
     // MARK: - Properties
@@ -33,19 +29,16 @@ class HoneyToDoTableViewCell: UITableViewCell {
     
 
     // MARK: - Functions
-    func updateUI(honeyToDo: HoneyToDo) {
-        honeyToDoToggle.isOn = honeyToDo.isFinished
-        honeyToDoLabel.text = honeyToDo.honeyToDo
+    func updateUI(honeyToDo: TaskToDo) {
+        honeyToDoLabel1.text = honeyToDo.honeyToDo
+        let image = UIImage(systemName: honeyToDo.isFinished ? "moon.fill" : "moon")
+        honeyToDoButton.setImage(image, for: .normal)
        
     }
     
     // MARK: - Actions
     
-    
-    @IBAction func honeyToDoToggleSwitched(_ sender: Any) {
+    @IBAction func honeyToDoButtonTapped(_ sender: Any) {
         delegate?.honeyToDoSwitch(cell: self)
-        
     }
-
-
 }

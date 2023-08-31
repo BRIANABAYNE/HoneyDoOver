@@ -11,30 +11,34 @@ import Foundation
 class HoneyDoViewModel {
     
     // MARK: - Properties
-    var honeyDos: [HoneyDo] = []
-    var pendingHoneyDos: [HoneyDo] {
+    var honeyDos: [Task] = []
+    
+    var pendingHoneyDos: [Task] {
         honeyDos.filter({!$0.isDone})
     }
-    init() {
-        load()
+    init() { // initialzing the class of the HoneyDoViewModel
+        load() // Calling the load inside of the function of the init, will load the information from our JSON persit.
     }
     
     
     // MARK: - Functions
-    
-    func create(honeyDo: String) {
-        let honeyDo = HoneyDo(honeyDo: honeyDo)
+    // Creating - Crud Function
+    func create(taskNameOne: String) {
+        // Creating a constaint and assigning it the value of a HoneyDo Init with of type honeyDo
+        let honeyDo = Task(honeyDo: taskNameOne)
+        // appending "adding" the honeyDo that I just created on line 27
         honeyDos.append(honeyDo)
+        // Calling save for the JSon
         save()
     }
     
-    func delete(honeyDo: HoneyDo) {
+    func delete(honeyDo: Task) {
         guard let index = honeyDos.firstIndex(of: honeyDo) else { return }
         honeyDos.remove(at: index)
         save()
     }
     // This is change the status of the toggle / takse whatever the current bool is and does the opposite / Toggle is the boolan variable value.
-    func toggleIsDone(honeyDo: HoneyDo) {
+    func toggleIsDone(honeyDo: Task) {
         honeyDo.isDone.toggle()
         save() // dont forget the save
     }
@@ -62,7 +66,7 @@ class HoneyDoViewModel {
         guard let url = fileURL else { return }
         do {
             let data = try Data(contentsOf: url)
-            let honeyDo = try JSONDecoder().decode([HoneyDo].self, from: data)
+            let honeyDo = try JSONDecoder().decode([Task].self, from: data)
             self.honeyDos = honeyDo
         } catch {
             print("Load didn't work")

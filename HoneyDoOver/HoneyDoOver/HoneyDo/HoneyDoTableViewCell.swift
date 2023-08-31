@@ -9,7 +9,7 @@ import UIKit
 
 // MARK: - Protocol
 protocol HoneyDoTableViewCellDelegate: AnyObject {
-    func honeyDoToggle(cell: HoneyDoTableViewCell)
+    func honeyDoButtonTapped(cell: HoneyDoTableViewCell)
 }
 
 
@@ -17,9 +17,8 @@ class HoneyDoTableViewCell: UITableViewCell {
 
     // MARK: - Outlets
     
-    @IBOutlet weak var honeyDoToggle: UISwitch!
-    @IBOutlet weak var honeyDoTextField: UITextField!
-    
+    @IBOutlet weak var honeyDoButton: UIButton!
+    @IBOutlet weak var honeyDoLabel: UILabel!
     
     // MARK: - Lifecycles
     override func awakeFromNib() {
@@ -33,16 +32,15 @@ class HoneyDoTableViewCell: UITableViewCell {
     
     
     // MARK: - Actions
-    @IBAction func honeyDoToggleSwitched(_ sender: Any) {
-        delegate?.honeyDoToggle(cell: self) // the task that needs to be done by the employee 
+    @IBAction func honeyDoButtonTapped(_ sender: Any) {
+        delegate?.honeyDoButtonTapped(cell: self)
     }
     
   // MARK: - Functions
-    func updateUI(honeyDo:HoneyDo) {
-        honeyDoToggle.isOn = honeyDo.isDone
-        honeyDoTextField.text = honeyDo.honeyDo             // true - // false
-//        let image = UIImage(systemName: honeyDo.isDone ? "" : "" )
-//        honeyDoToggle.setImage(image, for: .normal)
+    func updateUI(honeyDo: Task) {
+        honeyDoLabel.text = honeyDo.taskName             // true - // false
+       let image = UIImage(systemName: honeyDo.isDone ? "moon.fill" : "moon" )
+       honeyDoButton.setImage(image, for: .normal)
     }
     
 
