@@ -7,35 +7,34 @@
 
 import UIKit
 
-class HoneyDoTableViewController: UITableViewController {
+class TaskTableViewController: UITableViewController {
     
  
     
     // MARK: - Outlets
     
-    @IBOutlet weak var honeyDoTextField: UITextField!
+    @IBOutlet weak var taskTextField: UITextField!
     
     
     // MARK: - Properties
     
-    var viewModel: HoneyDoViewModel!
-//    var honeyDos:[HoneyDo]? // this needs to be on the VM
+    var taskToDo: TaskToDo?
+
     
     
     // MARK: - LifeCycles
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = HoneyDoViewModel()
+       
         title = "HoneyDo" // title
       notificationCenter()
     }
     // MARK: - Actions
     
-    @IBAction func honeyDoButtonTapped(_ sender: Any) {
+    @IBAction func taskButtonTapped(_ sender: Any) {
         // retriving the data
-        guard let honeyDo = honeyDoTextField.text else  { return }
-        viewModel.create(taskNameOne: honeyDo)
-        honeyDoTextField.text = ""
+        guard let task = taskTextField.text else  { return }
+        taskTextField.text = ""
         tableView.reloadData() // this will call numberOfRows and then cellForRowAt
     }
     
@@ -43,18 +42,17 @@ class HoneyDoTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.pendingHoneyDos.count
+        return taskToDo?.taskToDos.count ?? 0
+       // Value of optional type 'Int?' must be unwrapped to a value of type 'Int'
+        
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       guard let cell = tableView.dequeueReusableCell(withIdentifier: "honeyCell", for: indexPath) as? HoneyDoTableViewCell
-        else { return UITableViewCell() }
-        
-        let honeyDo = viewModel.pendingHoneyDos[indexPath.row]
-        cell.updateUI(honeyDo: honeyDo)
+       guard let cell = tableView.dequeueReusableCell(withIdentifier: "honeyCell", for: indexPath) as? TaskTableViewCell,
+                let chore = taskToDo?.taskToDos[indexPath.row] else {return UITableViewCell()}
+             cell.updateUI(task: chore)
         cell.delegate = self // assigning the task
-        
         return cell
     }
     
@@ -62,29 +60,30 @@ class HoneyDoTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             
-            let honeyDo = viewModel.pendingHoneyDos[indexPath.row]
-            viewModel.delete(honeyDo: honeyDo)
+           guard let task = taskToDo?.taskToDos[indexPath.row],
+            let taskToDo = self.taskToDo else { return }
+            TaskController().deleteCompeletedTask(task: task, toDoTasks: taskToDo)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
 
+////
+//    @objc func markAllDone() {
+//        viewModel.markAllDone()
+//        tableView.reloadData()
+//    }
 //
-    @objc func markAllDone() {
-        viewModel.markAllDone()
-        tableView.reloadData()
-    }
-
-    @objc func markAllNotDone() {
-        viewModel.markAllNotDone()
-        tableView.reloadData()
-    }
-    
-    func notificationCenter() {
-        NotificationCenter.default.addObserver(self, selector: #selector(markAllDone), name: Constants.Notifications.markAllDone, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(markAllNotDone), name: Constants.Notifications.markAllDone, object: nil)
-
-    }
-    
+//    @objc func markAllNotDone() {
+//        viewModel.markAllNotDone()
+//        tableView.reloadData()
+//    }
+//
+//    func notificationCenter() {
+//        NotificationCenter.default.addObserver(self, selector: #selector(markAllDone), name: Constants.Notifications.markAllDone, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(markAllNotDone), name: Constants.Notifications.markAllDone, object: nil)
+//
+//    }
+//
     func presentNewMessageAlert(honeyDo: Task) {
         let alertController = UIAlertController(title: "All Done?" , message: "Would you like to delete this Honey-Do?", preferredStyle: .alert)
         let noAction = UIAlertAction(title: "Dismiss", style: .default) { _ in
@@ -93,7 +92,7 @@ class HoneyDoTableViewController: UITableViewController {
         alertController.addAction(noAction) // .destructive = red
         let yesAction = UIAlertAction(title: "Delete HoneyDo", style: .destructive) { _ in
             print("Action Taken: Delete List")
-         self.viewModel.toggleIsDone(honeyDo: honeyDo) // will toggle
+//         self.viewModel.toggleIsDone(honeyDo: honeyDo) // will toggle
 //           cell.updateUI(honeyDo: honeyDo) // relfect what the cell should display now
             self.tableView.reloadData()
             
@@ -108,13 +107,13 @@ class HoneyDoTableViewController: UITableViewController {
 } // end of VC
 
 // MARK: - Extensions -Extending the tableview controller, do the delegate. The employee doing the task that they were hired to do.
-extension HoneyDoTableViewController: HoneyDoTableViewCellDelegate {
-    func honeyDoButtonTapped(cell: HoneyDoTableViewCell) { // second place to hit in the data task for the protocol + delegate
-       guard let indexPath = tableView.indexPath(for: cell) else { return }
-     let honeyDo = viewModel.pendingHoneyDos[indexPath.row]
-     self.viewModel.toggleIsDone(honeyDo: honeyDo)
-        cell.updateUI(honeyDo: honeyDo)
-      presentNewMessageAlert(honeyDo: honeyDo)
+extension TaskTableViewController: TaskTableViewCellDelegate {
+    func taskButtonTapped(cell: TaskTableViewCell) { // second place to hit in the data task for the protocol + delegate
+     guard let indexPath = tableView.indexPath(for: cell) else { return }
+        let task = TaskController.shared.mormonTask[indexPath.row]
+        TaskController.shared.toggleTaskToFinish(for: task)
+        cell.taskToDo = task
+      presentNewMessageAlert(honeyDo: Task)
     
     }
     

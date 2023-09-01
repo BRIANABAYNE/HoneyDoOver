@@ -8,37 +8,37 @@
 import Foundation
 
 // playlist 
-class HoneyToViewController {
-    
-    // MARK: - Properties
-    
-    var viewModel: HoneyDoViewModel!
-
-//    var completedHoneyToDo: [HoneyToDo] {
-//        honeyToDos.filter({!$0.isFinished})
-//    }
-    
+//class HoneyToViewController {
+//    
+//    // MARK: - Properties
+//    
+//    var viewModel: HoneyDoViewModel!
+//
+////    var completedHoneyToDo: [HoneyToDo] {
+////        honeyToDos.filter({!$0.isFinished})
+////    }
+//    
     
 //    init() {
 //        load()
 //    }
     
     // MARK: - Functions
-    
-  func createTask(for honeyToDo: TaskToDo, task: String) {
-        let taskToDo = Task(honeyDo: task)
-        honeyToDo.placeHolders.append(taskToDo)
-//       save()
-    }
-    
-    
-    func deleteTask(task: Task, from honeyToDo: TaskToDo) {
-        guard let index = honeyToDo.taskToDos.firstIndex(of: task) else { return }
-        honeyToDo.taskToDos.remove(at: index)
-//        save()
-    }
-    
-//    //
+//
+//  func createTask(for honeyToDo: TaskToDo, task: String) {
+//        let taskToDo = Task(honeyDo: task)
+//        honeyToDo.placeHolders.append(taskToDo)
+////       save()
+//    }
+//
+//
+//    func deleteTask(task: Task, from honeyToDo: TaskToDo) {
+//        guard let index = honeyToDo.taskToDos.firstIndex(of: task) else { return }
+//        honeyToDo.taskToDos.remove(at: index)
+////        save()
+//    }
+//
+////    //
 //    func toggleIsFinished(honeyToDo: HoneyToDo) {
 //        honeyToDos.forEach{ $0.isFinished = true}
 //        save()

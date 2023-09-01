@@ -64,9 +64,6 @@ class TaskController {
     func toggleIsCompleted(taskToDo: TaskToDo) {
         taskToDo.isFinished.toggle()
     }
-    
-    
-    
   
     // MARK: - Persistence
     // writing

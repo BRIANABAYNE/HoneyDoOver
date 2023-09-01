@@ -7,28 +7,34 @@
 
 import UIKit
 
-class HoneyToDoTableViewController: UITableViewController {
+class TaskToDoTableViewController: UITableViewController {
     
     
     // Adding the outlet of the textField here since it lives on the tableView and not the cell.
     // MARK: - Outlets
-    @IBOutlet weak var honeyToDoTextField: UITextField!
+    @IBOutlet weak var taskToDoTextField: UITextField!
     
     
     // MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = HoneyToViewController()
+       
 
       notificationCenter()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.reloadData()
+    }
+    
+    
     // MARK: - Actions
     // Button tapped
     @IBAction func honeyToDoButtonTapped(_ sender: Any) {
-        guard let honeyToDo = honeyToDoTextField.text else { return } // guarding this, if we cant
+        guard let honeyToDo = taskToDoTextField.text else { return } // guarding this, if we cant
         viewModel.createTask(for: honeyToDo, task: taskToDo)
-        honeyToDoTextField.text = ""
+        taskToDoTextField.text = ""
         tableView.reloadData()
     }
 
@@ -103,7 +109,7 @@ class HoneyToDoTableViewController: UITableViewController {
     
 } // end of VC
 
-extension HoneyToDoTableViewController: HoneyToDoTableViewCellDelegate {
+extension TaskToDoTableViewController: HoneyToDoTableViewCellDelegate {
     func honeyToDoSwitch(cell: HoneyToDoTableViewCell) {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         let honeyToDo = viewModel.honeyToDos[indexPath.row]

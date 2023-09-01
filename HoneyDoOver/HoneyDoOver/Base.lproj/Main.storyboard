@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Honey Do Table View Controller-->
+        <!--Task Table View Controller-->
         <scene sceneID="5OI-hJ-W0x">
             <objects>
-                <tableViewController id="uTR-lk-8FZ" customClass="HoneyDoTableViewController" customModule="HoneyDoOver" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="uTR-lk-8FZ" customClass="TaskTableViewController" customModule="HoneyDoOver" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="eno-kn-a9b">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -32,14 +32,14 @@
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="filled" title="Create"/>
                                     <connections>
-                                        <action selector="honeyDoButtonTapped:" destination="uTR-lk-8FZ" eventType="touchUpInside" id="LS5-Fh-pa3"/>
+                                        <action selector="taskButtonTapped:" destination="uTR-lk-8FZ" eventType="touchUpInside" id="LS5-Fh-pa3"/>
                                     </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemCyanColor"/>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="honeyCell" rowHeight="108" id="bnv-5d-3eY" customClass="HoneyDoTableViewCell" customModule="HoneyDoOver" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="honeyCell" rowHeight="108" id="bnv-5d-3eY" customClass="TaskTableViewCell" customModule="HoneyDoOver" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="94" width="393" height="108"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bnv-5d-3eY" id="xyl-Nj-FnN">
@@ -54,7 +54,7 @@
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="moon" catalog="system"/>
                                                     <connections>
-                                                        <action selector="honeyDoButtonTapped:" destination="bnv-5d-3eY" eventType="touchUpInside" id="Nay-uY-8zV"/>
+                                                        <action selector="taskToDoButtonTapped:" destination="bnv-5d-3eY" eventType="touchUpInside" id="Nay-uY-8zV"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IiC-df-VzE">
@@ -75,8 +75,8 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
-                                    <outlet property="honeyDoButton" destination="Kc0-mN-Y4T" id="obx-yt-t5f"/>
-                                    <outlet property="honeyDoLabel" destination="IiC-df-VzE" id="coO-xY-gz4"/>
+                                    <outlet property="taskToDoButton" destination="Kc0-mN-Y4T" id="obx-yt-t5f"/>
+                                    <outlet property="taskToDoLabel" destination="IiC-df-VzE" id="coO-xY-gz4"/>
                                     <segue destination="HQB-lY-bTT" kind="show" id="h8N-rt-PXB"/>
                                 </connections>
                             </tableViewCell>
@@ -90,17 +90,17 @@
                         <nil key="title"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="honeyDoTextField" destination="VTO-LZ-0ou" id="3yB-Oa-KeJ"/>
+                        <outlet property="taskTextField" destination="VTO-LZ-0ou" id="3yB-Oa-KeJ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cc9-it-fFQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-92.36641221374046" y="-175.35211267605635"/>
         </scene>
-        <!--Honey To Do Table View Controller-->
+        <!--Task To Do Table View Controller-->
         <scene sceneID="UZI-zd-uJx">
             <objects>
-                <tableViewController id="HQB-lY-bTT" customClass="HoneyToDoTableViewController" customModule="HoneyDoOver" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="HQB-lY-bTT" customClass="TaskToDoTableViewController" customModule="HoneyDoOver" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="gNu-QF-eD0">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -184,7 +184,7 @@
                         <nil key="title"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="honeyToDoTextField" destination="UYz-Fx-NmW" id="k6x-wA-g4f"/>
+                        <outlet property="taskToDoTextField" destination="UYz-Fx-NmW" id="k6x-wA-g4f"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B2c-lA-JL3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
