@@ -9,53 +9,44 @@ import UIKit
 
 class TaskToDoTableViewController: UITableViewController {
     
-    
     // Adding the outlet of the textField here since it lives on the tableView and not the cell.
     // MARK: - Outlets
     @IBOutlet weak var taskToDoTextField: UITextField!
     
-    
     // MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+    
+    }
 
-      notificationCenter()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.tableView.reloadData()
-    }
-    
-    
     // MARK: - Actions
     // Button tapped
-    @IBAction func honeyToDoButtonTapped(_ sender: Any) {
-        guard let honeyToDo = taskToDoTextField.text else { return } // guarding this, if we cant
-        viewModel.createTask(for: honeyToDo, task: taskToDo)
+    @IBAction func taskToDoButtonTapped(_ sender: Any) {
+        guard  let task = taskToDoTextField.text, !task.isEmpty,
+          let toDoTask = self.taskToDo else { return }
         taskToDoTextField.text = ""
-        tableView.reloadData()
+          TaskController().createTaskToComplete(toComplete: toDoTask, taskItem: task)
+        self.tableView.reloadData()
     }
 
     // MARK: - Properties
     
-    var viewModel:HoneyToViewController!
+    var taskToDo: TaskToDo?
     
     
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.honeyToDos.count
+        return taskToDo?.taskToDos.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        guard let cell = tableView.dequeueReusableCell(withIdentifier: "honeyToDo", for: indexPath) as?
-        HoneyToDoTableViewCell else { return UITableViewCell() }
+        TaskToDoTableViewCell,
+        let task = taskToDo?.taskToDos[indexPath.row] else { return UITableViewCell()}
+       
+        cell.updateUITask(task: task)
         
-        
-        let honeyToDo = viewModel.honeyToDos[indexPath.row]
-        cell.updateUI(honeyToDo: honeyToDo)
         cell.delegate = self
         return cell
     }
@@ -63,70 +54,52 @@ class TaskToDoTableViewController: UITableViewController {
     // swip to delete
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let honeyToDo = viewModel.honeyToDos[indexPath.row]
-            viewModel.delete(honeyToDo: honeyToDo)
+           guard let taskToDo = taskToDo?.taskToDos[indexPath.row],
+                let mormonTask = self.taskToDo else { return }
+            TaskController().deleteCompeletedTask(task: taskToDo, toDoTasks: mormonTask)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
         
     }
-    
-    @objc func markAllFinished() {
-        viewModel.markAllFinished()
-        tableView.reloadData()
-    }
-    
-    @objc func markAllNotFinished() {
-        viewModel.markAllNotFinished()
-        tableView.reloadData()
-    }
-    
-    func notificationCenter() {
-      NotificationCenter.default.addObserver(self, selector: #selector(markAllFinished), name: Constants.Notifications.markAllDone, object: nil)
-     NotificationCenter.default.addObserver(self, selector: #selector(markAllNotFinished), name: Constants.Notifications.markALLNotDone, object: nil)
-        
-    }
-    
-    func presentNextMessageAlert(honeyToDo: TaskToDo) {
+
+    func presentAlertWhenAllFinished() {
         
         let alertController = UIAlertController(title: "All Done?" , message: "What do you want to do?", preferredStyle: .alert)
-        let noAction = UIAlertAction(title: "Keep HoneyDo", style: .default) { _ in
+        let noAction = UIAlertAction(title: "Keep HoneyDo", style: .default)
             print("Action Taken: Dissmiss") // .default = blue
-        }
         alertController.addAction(noAction) // .destructive = red
         let yesAction = UIAlertAction(title: "Delete HoneyDo", style: .destructive) { _ in
             print("Action Taken: Delete List")
-            self.viewModel.toggleIsFinished(honeyToDo: honeyToDo)
-            
-//            cell.updateUI(honeyDo: honeyDo) // relfect what the cell should display now
-            self.tableView.reloadData()
+            guard let dadTaskToDo = self.taskToDo else { return }
+            TaskController.shared.deleteTask(doDelete: dadTaskToDo)
+            self.navigationController?.popViewController(animated: true)
         }
         
         alertController.addAction(noAction)
         alertController.addAction(yesAction)
         self.present(alertController, animated: true)
-//      self.markAllNotFinished()     // will toggle
+    }
+    
+    func allTaskDone() {
+        guard let toDoTask = taskToDo else { return }
+        for task in toDoTask.taskToDos {
+            if task.isDone == false {
+                return
+            }
+        }
+        presentAlertWhenAllFinished()
     }
     
 } // end of VC
 
-extension TaskToDoTableViewController: HoneyToDoTableViewCellDelegate {
-    func honeyToDoSwitch(cell: HoneyToDoTableViewCell) {
-        guard let indexPath = tableView.indexPath(for: cell) else { return }
-        let honeyToDo = viewModel.honeyToDos[indexPath.row]
-      self.viewModel.toggleIsFinished(honeyToDo: honeyToDo)
-//        self.viewModel.markAllFinished()
-        cell.updateUI(honeyToDo: honeyToDo)
-        
-      for honeyToDo in viewModel.honeyToDos {
-         if honeyToDo.isFinished != true {
-             return
-          }
-        }
-//        viewModel.honeyToDos.isFinished = true
-       presentNextMessageAlert(honeyToDo: honeyToDo )
-        
-//      markAllFinished()
-            
-        }
-        
+// MARK: - Extension
+extension TaskToDoTableViewController: TaskToDoTableViewCellDelegate {
+    func taskToDoSwitch(cell: TaskToDoTableViewCell) {
+        guard let indexPath = tableView.indexPath(for: cell),
+        let taskToDo = self.taskToDo else { return }
+      let task = taskToDo.taskToDos[indexPath.row]
+        TaskController().toggleTaskToFinish(for: task)
+        allTaskDone()
+        self.tableView.reloadData()
     }
+}

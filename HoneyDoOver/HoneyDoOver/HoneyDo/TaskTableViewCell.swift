@@ -20,16 +20,14 @@ class TaskTableViewCell: UITableViewCell {
     @IBOutlet weak var taskToDoButton: UIButton!
     @IBOutlet weak var taskToDoLabel: UILabel!
     
-    // MARK: - Lifecycles
-    override func awakeFromNib() {
-        super.awakeFromNib()
-       
-    }
 
     // MARK: - Properties
     weak var delegate: TaskTableViewCellDelegate? // job opening - We make it weak to handle the memory, weak will not add to the memory. // No one has been hired yet, still need to assign the delegate.
- 
-    
+    var toDoTask: TaskToDo? {
+        didSet {
+            updateUIFirstScreen()
+        }
+    }
     
     // MARK: - Actions
     @IBAction func taskToDoButtonTapped(_ sender: Any) {
@@ -37,10 +35,12 @@ class TaskTableViewCell: UITableViewCell {
     }
     
   // MARK: - Functions
-    func updateUI(task: Task) {
-        taskToDoLabel.text = task.taskName             // true - // false
-       let image = UIImage(systemName: task.isDone ? "moon.fill" : "moon" )
-       taskToDoButton.setImage(image, for: .normal)
+    func updateUIFirstScreen() {
+        guard let task = toDoTask else { return }
+        taskToDoLabel.text = task.taskToDoName
+                                  // true - // false
+        let image = task.isFinished ? "moon.fill" : "moon"
+        taskToDoButton.setImage(UIImage(systemName: image), for: .normal)
     }
     
 

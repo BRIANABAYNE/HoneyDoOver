@@ -21,11 +21,8 @@ class Task: Codable {
         self.taskName = taskName
         self.uuid = uuid
         self.isDone = isDone
-
     }
-    
 }
-
 // MARK: - Extension
 // We need equtable to delete - first index of only exsit with equtable, It is an extension becasue it requires more work.
 extension Task: Equatable {

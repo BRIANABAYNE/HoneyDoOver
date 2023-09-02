@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 class TaskToDo: Codable {
     // reading and writing - Need codeable for persistance 
     let taskToDoName: String // task to do
@@ -23,7 +22,6 @@ class TaskToDo: Codable {
         self.taskToDos = taskToDos
     }
 }
-
 // MARK: - Extenstion
 // Need Equtable for delete - first index of.
 extension TaskToDo: Equatable {

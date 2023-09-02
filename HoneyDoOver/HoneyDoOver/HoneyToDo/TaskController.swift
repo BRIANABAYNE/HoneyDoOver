@@ -14,7 +14,7 @@ class TaskController {
     // MARK: - Properties - SST
     static let shared = TaskController()
     // Singlton
-    var mormonTask: [TaskToDo] = []
+    var mormonTasks: [TaskToDo] = []
     
    // - init for the class + Calling the load for JSON
     init() {
@@ -26,13 +26,13 @@ class TaskController {
 
     func createTask(taskName: String) {
         let taskToDo = TaskToDo(taskToDoName: taskName)
-        mormonTask.append(taskToDo)
+        mormonTasks.append(taskToDo)
         save()
     }
     
     func deleteTask(doDelete: TaskToDo) {
-        guard let path = mormonTask.firstIndex(of: doDelete) else { return }
-        mormonTask.remove(at: path)
+        guard let path = mormonTasks.firstIndex(of: doDelete) else { return }
+        mormonTasks.remove(at: path)
         save()
     }
     
@@ -70,7 +70,7 @@ class TaskController {
     func save() {
         guard let url = fileURL else {return}
         do {
-            let data = try JSONEncoder().encode(mormonTask)
+            let data = try JSONEncoder().encode(mormonTasks)
             try data.write(to: url)
         } catch {
             print(error)
@@ -82,7 +82,7 @@ class TaskController {
         do {
             let data = try Data(contentsOf: url)
             let task = try JSONDecoder().decode([TaskToDo].self, from: data)
-            self.mormonTask = task
+            self.mormonTasks = task
         } catch {
             print(error)
         }
@@ -94,9 +94,4 @@ class TaskController {
         let url = documentsDirectory.appendingPathComponent("tasks.json")
         return url
     }
-    
-    
-    
-    
-    
 }

@@ -19,7 +19,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="HoneyDo" textAlignment="natural" minimumFontSize="17" id="VTO-LZ-0ou">
+                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="TaskForRooms" textAlignment="natural" minimumFontSize="17" id="VTO-LZ-0ou">
                                     <rect key="frame" x="16" y="5" width="194" height="34"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -39,7 +39,7 @@
                             <color key="backgroundColor" systemColor="systemCyanColor"/>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="honeyCell" rowHeight="108" id="bnv-5d-3eY" customClass="TaskTableViewCell" customModule="HoneyDoOver" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="honeyCell" editingAccessoryType="detailDisclosureButton" focusStyle="custom" rowHeight="108" id="bnv-5d-3eY" customClass="TaskTableViewCell" customModule="HoneyDoOver" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="94" width="393" height="108"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bnv-5d-3eY" id="xyl-Nj-FnN">
@@ -77,7 +77,7 @@
                                 <connections>
                                     <outlet property="taskToDoButton" destination="Kc0-mN-Y4T" id="obx-yt-t5f"/>
                                     <outlet property="taskToDoLabel" destination="IiC-df-VzE" id="coO-xY-gz4"/>
-                                    <segue destination="HQB-lY-bTT" kind="show" id="h8N-rt-PXB"/>
+                                    <segue destination="HQB-lY-bTT" kind="show" identifier="doTheseTaskBeezy" id="h8N-rt-PXB"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -109,7 +109,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="HoneyToDo" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UYz-Fx-NmW">
+                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="TaskForEachRoom" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UYz-Fx-NmW">
                                     <rect key="frame" x="25" y="5" width="168" height="34"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
@@ -121,7 +121,7 @@
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="filled" title="Save"/>
                                     <connections>
-                                        <action selector="honeyToDoButtonTapped:" destination="HQB-lY-bTT" eventType="touchUpInside" id="FWO-Ji-wrI"/>
+                                        <action selector="taskToDoButtonTapped:" destination="HQB-lY-bTT" eventType="touchUpInside" id="FWO-Ji-wrI"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -134,7 +134,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="honeyToDo" rowHeight="127" id="ATB-KR-ZdI" customClass="HoneyToDoTableViewCell" customModule="HoneyDoOver" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="honeyToDo" rowHeight="127" id="ATB-KR-ZdI" customClass="TaskToDoTableViewCell" customModule="HoneyDoOver" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="94" width="393" height="127"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ATB-KR-ZdI" id="rnX-cD-Ivv">
@@ -149,7 +149,7 @@
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="moon" catalog="system"/>
                                                     <connections>
-                                                        <action selector="honeyToDoButtonTapped:" destination="ATB-KR-ZdI" eventType="touchUpInside" id="aPp-xO-auA"/>
+                                                        <action selector="TaskToDoButtonTapped:" destination="ATB-KR-ZdI" eventType="touchUpInside" id="aPp-xO-auA"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jpx-JV-KYg">
@@ -170,8 +170,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="honeyToDoButton" destination="RWw-6D-mJ5" id="jSn-AQ-eLs"/>
-                                    <outlet property="honeyToDoLabel1" destination="Jpx-JV-KYg" id="7IP-qs-DNq"/>
+                                    <outlet property="taskToDoButton" destination="RWw-6D-mJ5" id="jSn-AQ-eLs"/>
+                                    <outlet property="taskToDoLabel" destination="Jpx-JV-KYg" id="7IP-qs-DNq"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
