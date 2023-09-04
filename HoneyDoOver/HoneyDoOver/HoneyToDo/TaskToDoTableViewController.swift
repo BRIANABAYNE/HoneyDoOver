@@ -45,7 +45,7 @@ class TaskToDoTableViewController: UITableViewController {
         let task = taskToDo?.taskToDos[indexPath.row] else { return UITableViewCell()}
        
         cell.updateUITask(task: task)
-        
+        // Hiring the employee - accessing the delegate property. Self = TaskToDoTableViewController - Step 4
         cell.delegate = self
         return cell
     }
@@ -89,11 +89,16 @@ class TaskToDoTableViewController: UITableViewController {
         presentAlertWhenAllFinished()
     }
     
+    
+    
+    
+    
 } // end of VC
 
 // MARK: - Extension
+// Confirming to TaskToDoTableViewCellDelegate - Step 5 
 extension TaskToDoTableViewController: TaskToDoTableViewCellDelegate {
-    func taskToDoSwitch(cell: TaskToDoTableViewCell) {
+    func taskToDoSwitch(cell: TaskToDoTableViewCell) { // what I created on the cell - how to do the tasks
         guard let indexPath = tableView.indexPath(for: cell),
         let taskToDo = self.taskToDo else { return }
       let task = taskToDo.taskToDos[indexPath.row]

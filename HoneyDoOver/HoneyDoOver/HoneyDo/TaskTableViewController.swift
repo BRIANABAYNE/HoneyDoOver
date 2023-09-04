@@ -10,23 +10,20 @@ import UIKit
 class TaskTableViewController: UITableViewController {
 
     // MARK: - Outlets
-    
     @IBOutlet weak var taskTextField: UITextField!
     
-    
     // MARK: - Properties
-    
     var task: Task?
     
-    
     // MARK: - LifeCycles
+    // viewDidLoad will only happen when the app launches
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "HoneyDo" // title
-        
     }
     
+  //  I am adding view will appear + tableview reload data becasue the viewdid load only runs when the app launches and we need the tableview to reload our data once we have created a task. This action happens when the app is still open meaning that viewDidLoad wont trigger again.
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tableView.reloadData()
@@ -45,7 +42,6 @@ class TaskTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return TaskController.shared.mormonTasks.count
-        
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -53,7 +49,7 @@ class TaskTableViewController: UITableViewController {
         
         let chore = TaskController.shared.mormonTasks[indexPath.row]
         cell.toDoTask = chore
-        cell.delegate = self // assigning the task
+        cell.delegate = self // assigning the task Step 4 - Hiring the employee
         return cell
     }
     
@@ -105,7 +101,8 @@ class TaskTableViewController: UITableViewController {
     }
 // end of VC
 
-// MARK: - Extensions -Extending the tableview controller, do the delegate. The employee doing the task that they were hired to do.
+// MARK: - Extensions
+//Extending the tableview controller, to the delegate. The employee doing the task that they were hired to do. Step 5
 extension TaskTableViewController: TaskTableViewCellDelegate {
     func taskButtonTapped(cell: TaskTableViewCell) { // second place to hit in the data task for the protocol + delegate
      guard let indexPath = tableView.indexPath(for: cell) else { return }

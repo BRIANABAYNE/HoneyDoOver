@@ -28,7 +28,7 @@ class TaskController {
         mormonTasks.append(taskToDo)
         save()
     }
-    // Delete - swipe to delete
+    // Delete -
     func deleteTask(doDelete: TaskToDo) {
         guard let path = mormonTasks.firstIndex(of: doDelete) else { return }
         mormonTasks.remove(at: path)
@@ -42,11 +42,6 @@ class TaskController {
         toComplete.taskToDos.append(dadTask)
         save()
     }
-    
-//    func updateTask(task: Task, newTask: String) {
-//        task.taskName = newTask
-//        save()
-//    }
     
     func deleteCompeletedTask(task: Task, toDoTasks: TaskToDo) {
         guard let index = toDoTasks.taskToDos.firstIndex(of: task) else { return }
