@@ -89,10 +89,6 @@ class TaskToDoTableViewController: UITableViewController {
         presentAlertWhenAllFinished()
     }
     
-    
-    
-    
-    
 } // end of VC
 
 // MARK: - Extension

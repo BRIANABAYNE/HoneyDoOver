@@ -14,6 +14,7 @@ class TaskTableViewController: UITableViewController {
     
     // MARK: - Properties
     var task: Task?
+    var taskToDo: TaskToDo?
     
     // MARK: - LifeCycles
     // viewDidLoad will only happen when the app launches
@@ -81,8 +82,8 @@ class TaskTableViewController: UITableViewController {
         let yesAction = UIAlertAction(title: "Delete Task", style: .destructive) { _ in
           //  alertController.addAction(yesAction)
             print("Action Taken: Delete List")
-            guard let task = self.task else {return}
-//            TaskController.shared.deleteCompeletedTask(task: task, toDoTasks: <#T##TaskToDo#>)
+            guard let task = self.task else {return }
+            TaskController.shared.deleteTask(doDelete: task)
             self.tableView.reloadData()
         }
 //
