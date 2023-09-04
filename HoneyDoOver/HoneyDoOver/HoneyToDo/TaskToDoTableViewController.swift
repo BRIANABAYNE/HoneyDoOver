@@ -16,23 +16,22 @@ class TaskToDoTableViewController: UITableViewController {
     // MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
-    
     }
+    
+    // MARK: - Properties
+    
+    var taskToDo: TaskToDo?
 
     // MARK: - Actions
     // Button tapped
     @IBAction func taskToDoButtonTapped(_ sender: Any) {
         guard  let task = taskToDoTextField.text, !task.isEmpty,
           let toDoTask = self.taskToDo else { return }
-        taskToDoTextField.text = ""
+        taskToDoTextField.text = "" // Once a user puts in a task, the textField will go back to empty
           TaskController().createTaskToComplete(toComplete: toDoTask, taskItem: task)
         self.tableView.reloadData()
     }
 
-    // MARK: - Properties
-    
-    var taskToDo: TaskToDo?
-    
     
     // MARK: - Table view data source
 

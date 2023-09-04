@@ -23,9 +23,12 @@ class TaskTableViewCell: UITableViewCell {
 
     // MARK: - Properties
     weak var delegate: TaskTableViewCellDelegate? // job opening - We make it weak to handle the memory, weak will not add to the memory. // No one has been hired yet, still need to assign the delegate.
-    var toDoTask: TaskToDo? {
-        didSet {
-            updateUIFirstScreen()
+    var toDoTask: TaskToDo?
+    
+    // MARK: - Property Observer
+            {
+        didSet { // calls code right after the property has changed 
+        updateUIFirstScreen()
         }
     }
     
@@ -42,6 +45,4 @@ class TaskTableViewCell: UITableViewCell {
         let image = task.isFinished ? "moon.fill" : "moon"
         taskToDoButton.setImage(UIImage(systemName: image), for: .normal)
     }
-    
-
 } // end of ViewCell

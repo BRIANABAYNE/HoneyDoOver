@@ -19,13 +19,10 @@ class TaskToDoTableViewCell: UITableViewCell {
     
     // MARK: - Properties
     weak var delegate: TaskToDoTableViewCellDelegate?
-//    let toDoTask: TaskToDo?
 
     // MARK: - Functions
     func updateUITask(task: Task) {
-       
         taskToDoLabel.text =  task.taskName
-        
         let image = task.isDone ?  "moon.fill" : "moon"
         taskToDoButton.setImage(UIImage(systemName: image), for: .normal)
     }

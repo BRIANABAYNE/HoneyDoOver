@@ -10,8 +10,8 @@ import Foundation
 
 class TaskController {
     
-    
-    // MARK: - Properties - SST
+    // MARK: - Properties 
+    // SST
     static let shared = TaskController()
     // Singlton
     var mormonTasks: [TaskToDo] = []
@@ -22,21 +22,20 @@ class TaskController {
     }
     
     // MARK: - Crud Functions for Task
-
-
+      // create
     func createTask(taskName: String) {
         let taskToDo = TaskToDo(taskToDoName: taskName)
         mormonTasks.append(taskToDo)
         save()
     }
-    
+    // Delete - swipe to delete
     func deleteTask(doDelete: TaskToDo) {
         guard let path = mormonTasks.firstIndex(of: doDelete) else { return }
         mormonTasks.remove(at: path)
         save()
     }
     
-    // MARK: - Crub Functions for TaskToDo
+    // MARK: - Crud Functions for TaskToDo
     
     func createTaskToComplete(toComplete: TaskToDo, taskItem: String ) {
         let dadTask = Task(taskName: taskItem)
@@ -44,10 +43,10 @@ class TaskController {
         save()
     }
     
-    func updateTask(task: Task, newTask: String) {
-        task.taskName = newTask
-        save()
-    }
+//    func updateTask(task: Task, newTask: String) {
+//        task.taskName = newTask
+//        save()
+//    }
     
     func deleteCompeletedTask(task: Task, toDoTasks: TaskToDo) {
         guard let index = toDoTasks.taskToDos.firstIndex(of: task) else { return }

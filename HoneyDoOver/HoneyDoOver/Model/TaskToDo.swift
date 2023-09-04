@@ -8,11 +8,11 @@
 import Foundation
 
 class TaskToDo: Codable {
-    // reading and writing - Need codeable for persistance 
+    // Adopting codable for persistance
     let taskToDoName: String // task to do
     let uuid: UUID // unique # - can compaire two taks with UUID to assure they are the same task. 
     var isFinished: Bool // for toggle
-    var taskToDos: [Task]
+    var taskToDos: [Task]  // Using this propery to hold onto certain task on on taskList
     
     // init the class - assiging the value of UUID and isFinished.
     init(taskToDoName: String, isFinished: Bool = false, uuid: UUID = UUID(), taskToDos:[Task] = []) {
@@ -26,7 +26,7 @@ class TaskToDo: Codable {
 // Need Equtable for delete - first index of.
 extension TaskToDo: Equatable {
     static func == (lhs: TaskToDo, rhs: TaskToDo) -> Bool {
-        // Creating a method for our code to bo able to compair two HoneyToDo - Look at lhs to rhs and if they are the same, it's the same task.
+        // Creating a method for our code to bo able to compair two TaskToDo - Look at lhs to rhs and if they are the same, it's the same task.
         return lhs.uuid == rhs.uuid
     }
 }

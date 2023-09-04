@@ -16,7 +16,9 @@ class TaskTableViewController: UITableViewController {
     
     // MARK: - Properties
     
-    //    var taskToDo: TaskToDo?
+    var task: Task?
+    
+    
     // MARK: - LifeCycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,20 +83,24 @@ class TaskTableViewController: UITableViewController {
         print("Action Taken: Dissmiss") // .default = blue
         alertController.addAction(noAction) // .destructive = red
         let yesAction = UIAlertAction(title: "Delete Task", style: .destructive) { _ in
+          //  alertController.addAction(yesAction)
             print("Action Taken: Delete List")
-          
+            guard let task = self.task else {return}
+//            TaskController.shared.deleteCompeletedTask(task: task, toDoTasks: <#T##TaskToDo#>)
+            self.tableView.reloadData()
         }
 //
 //                     self.viewModel.toggleIsDone(honeyDo: honeyDo) // will toggle
 //                       cell.updateUI(honeyDo: honeyDo) // relfect what the cell should display now
 //                        self.tableView.reloadData()
 //
-            
+
             alertController.addAction(noAction)
             alertController.addAction(yesAction)
             self.present(alertController, animated: true)
             
         }
+    
         
     }
 // end of VC
