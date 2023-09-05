@@ -19,8 +19,8 @@ class TaskTableViewCell: UITableViewCell {
     
     @IBOutlet weak var taskToDoButton: UIButton!
     @IBOutlet weak var taskToDoLabel: UILabel!
+    @IBOutlet weak var countLabel: UILabel!
     
-
     // MARK: - Properties
     weak var delegate: TaskTableViewCellDelegate? // job opening - We make it weak to handle the memory, weak will not add to the memory. // No one has been hired yet, still need to assign the delegate. step 2
     
@@ -33,13 +33,18 @@ class TaskTableViewCell: UITableViewCell {
     
     // MARK: - Actions
     @IBAction func taskToDoButtonTapped(_ sender: Any) {
-        delegate?.taskButtonTapped(cell: self) // step 3 - calling the delegate 
+        delegate?.taskButtonTapped(cell: self) // step 3 - calling the delegate
+        
     }
     
   // MARK: - Functions
+    
+  
     func updateUIFirstScreen() {
+        
         // Making sure I have a task
         guard let task = toDoTask else { return }
+        countLabel.text = "\(task.taskToDos.count)"
         // the lable. text is assigned task. taskToDoName - taskToDoName is my model object 
         taskToDoLabel.text = task.taskToDoName
                                   // true - // false

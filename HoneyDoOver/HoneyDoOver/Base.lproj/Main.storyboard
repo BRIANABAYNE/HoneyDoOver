@@ -39,42 +39,48 @@
                             <color key="backgroundColor" systemColor="systemCyanColor"/>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="honeyCell" editingAccessoryType="detailButton" focusStyle="custom" rowHeight="108" id="bnv-5d-3eY" customClass="TaskTableViewCell" customModule="HoneyDoOver" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="honeyCell" editingAccessoryType="disclosureIndicator" rowHeight="108" id="bnv-5d-3eY" customClass="TaskTableViewCell" customModule="HoneyDoOver" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="94" width="393" height="108"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bnv-5d-3eY" id="xyl-Nj-FnN">
                                     <rect key="frame" x="0.0" y="0.0" width="362.66666666666669" height="108"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="124" translatesAutoresizingMaskIntoConstraints="NO" id="Myk-Gc-mgh">
-                                            <rect key="frame" x="35.999999999999986" y="37" width="214.66666666666663" height="34.333333333333343"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kc0-mN-Y4T">
-                                                    <rect key="frame" x="0.0" y="0.0" width="49.333333333333336" height="34.333333333333336"/>
-                                                    <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="plain" image="moon" catalog="system"/>
-                                                    <connections>
-                                                        <action selector="taskToDoButtonTapped:" destination="bnv-5d-3eY" eventType="touchUpInside" id="Nay-uY-8zV"/>
-                                                    </connections>
-                                                </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IiC-df-VzE">
-                                                    <rect key="frame" x="173.33333333333334" y="0.0" width="41.333333333333343" height="34.333333333333336"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </stackView>
+                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kc0-mN-Y4T">
+                                            <rect key="frame" x="40" y="37" width="49.333333333333343" height="34.333333333333343"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" image="moon" catalog="system"/>
+                                            <connections>
+                                                <action selector="taskToDoButtonTapped:" destination="bnv-5d-3eY" eventType="touchUpInside" id="Nay-uY-8zV"/>
+                                            </connections>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xqv-f9-OJS">
+                                            <rect key="frame" x="309.33333333333331" y="43.666666666666664" width="41.333333333333314" height="20.999999999999993"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IiC-df-VzE">
+                                            <rect key="frame" x="109.33333333333331" y="44" width="196" height="20.333333333333329"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="Myk-Gc-mgh" firstAttribute="leading" secondItem="xyl-Nj-FnN" secondAttribute="leadingMargin" constant="16" id="QBn-zS-EvQ"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="Myk-Gc-mgh" secondAttribute="trailing" constant="104" id="XTC-e5-wHd"/>
-                                        <constraint firstItem="Myk-Gc-mgh" firstAttribute="top" secondItem="xyl-Nj-FnN" secondAttribute="topMargin" constant="26" id="baV-p1-1p1"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="Myk-Gc-mgh" secondAttribute="bottom" constant="25.670000000000002" id="dyz-6F-JcL"/>
+                                        <constraint firstItem="IiC-df-VzE" firstAttribute="centerY" secondItem="xyl-Nj-FnN" secondAttribute="centerY" id="8cn-B4-CMh"/>
+                                        <constraint firstItem="Kc0-mN-Y4T" firstAttribute="centerY" secondItem="xyl-Nj-FnN" secondAttribute="centerY" id="9Of-4t-UhW"/>
+                                        <constraint firstItem="Xqv-f9-OJS" firstAttribute="centerY" secondItem="xyl-Nj-FnN" secondAttribute="centerY" id="Dpf-kd-AmD"/>
+                                        <constraint firstItem="IiC-df-VzE" firstAttribute="leading" secondItem="Kc0-mN-Y4T" secondAttribute="trailing" constant="20" id="Hok-ZX-tTv"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Xqv-f9-OJS" secondAttribute="trailing" constant="4" id="Xaf-d0-dYU"/>
+                                        <constraint firstItem="Kc0-mN-Y4T" firstAttribute="leading" secondItem="xyl-Nj-FnN" secondAttribute="leadingMargin" constant="20" id="jyM-q9-BYB"/>
+                                        <constraint firstItem="Xqv-f9-OJS" firstAttribute="leading" secondItem="IiC-df-VzE" secondAttribute="trailing" constant="4" id="mIa-UH-E6e"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Xqv-f9-OJS" secondAttribute="trailing" constant="4" id="rVR-Yf-VkK"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
+                                    <outlet property="countLabel" destination="Xqv-f9-OJS" id="h40-uy-mEy"/>
                                     <outlet property="taskToDoButton" destination="Kc0-mN-Y4T" id="obx-yt-t5f"/>
                                     <outlet property="taskToDoLabel" destination="IiC-df-VzE" id="coO-xY-gz4"/>
                                     <segue destination="HQB-lY-bTT" kind="show" identifier="doTheseTaskBeezy" id="h8N-rt-PXB"/>

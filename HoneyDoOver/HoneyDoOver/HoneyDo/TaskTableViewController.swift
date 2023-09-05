@@ -16,6 +16,8 @@ class TaskTableViewController: UITableViewController {
     var task: Task?
     var taskToDo: TaskToDo?
     
+    var data = [TaskToDo]()
+    
     // MARK: - LifeCycles
     // viewDidLoad will only happen when the app launches
     override func viewDidLoad() {
@@ -29,7 +31,7 @@ class TaskTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         self.tableView.reloadData()
     }
-    
+
     // MARK: - Actions
     
     @IBAction func taskButtonTapped(_ sender: Any) {
@@ -51,6 +53,7 @@ class TaskTableViewController: UITableViewController {
         let chore = TaskController.shared.mormonTasks[indexPath.row]
         cell.toDoTask = chore
         cell.delegate = self // assigning the task Step 4 - Hiring the employee
+
         return cell
     }
     
@@ -78,17 +81,21 @@ class TaskTableViewController: UITableViewController {
         let alertController = UIAlertController(title: "All Done?" , message: "Would you like to delete this Task?", preferredStyle: .alert)
         let noAction = UIAlertAction(title: "Dismiss", style: .default)
         print("Action Taken: Dissmiss") // .default = blue
-        alertController.addAction(noAction) // .destructive = red
+     //   alertController.addAction(noAction) // .destructive = red
         let yesAction = UIAlertAction(title: "Delete Task", style: .destructive) { _ in
-          //  alertController.addAction(yesAction)
             print("Action Taken: Delete List")
-            guard let task = self.task else {return }
-            TaskController.shared.deleteTask(doDelete: task)
+            guard let indexPath = self.tableView.indexPathForSelectedRow else { return }
+//            let task = self.data[indexPath.row]
+            self.data.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+//            guard let task = self.taskToDo else {return }
+//            TaskController.shared.deleteTask(doDelete: task)
+           // alertController.addAction(yesAction)
             self.tableView.reloadData()
         }
 //
 //                     self.viewModel.toggleIsDone(honeyDo: honeyDo) // will toggle
-//                       cell.updateUI(honeyDo: honeyDo) // relfect what the cell should display now
+                   // cell.updateUI(honeyDo: honeyDo) // relfect what the cell should display now
 //                        self.tableView.reloadData()
 //
 
@@ -107,10 +114,12 @@ class TaskTableViewController: UITableViewController {
 extension TaskTableViewController: TaskTableViewCellDelegate {
     func taskButtonTapped(cell: TaskTableViewCell) { // second place to hit in the data task for the protocol + delegate
      guard let indexPath = tableView.indexPath(for: cell) else { return }
+//        let task = self.task else {return}
         let task = TaskController.shared.mormonTasks[indexPath.row]
         TaskController.shared.toggleIsCompleted(taskToDo: task)
         cell.toDoTask = task
         presentNewMessageAlert()
+        self.tableView.reloadData()
     
     }
 }

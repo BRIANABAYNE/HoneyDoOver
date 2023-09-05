@@ -66,7 +66,7 @@ class TaskToDoTableViewController: UITableViewController {
         let alertController = UIAlertController(title: "All Done?" , message: "What do you want to do?", preferredStyle: .alert)
         let noAction = UIAlertAction(title: "Keep HoneyDo", style: .default)
             print("Action Taken: Dissmiss") // .default = blue
-        alertController.addAction(noAction) // .destructive = red
+       // alertController.addAction(noAction) // .destructive = red
         let yesAction = UIAlertAction(title: "Delete HoneyDo", style: .destructive) { _ in
             print("Action Taken: Delete List")
             guard let dadTaskToDo = self.taskToDo else { return }

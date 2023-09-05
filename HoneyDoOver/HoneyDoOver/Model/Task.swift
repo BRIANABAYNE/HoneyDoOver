@@ -13,11 +13,15 @@ class Task: Codable {
     var taskName: String // task
     let uuid: UUID // unique value - compaire to task to make sure they are the same
     var isDone: Bool // for toggle
+    var tasksToDo: [TaskToDo]
     // initizing the class Task, Assiging UUID and idDone with their values.
-    init(taskName: String, uuid: UUID = UUID(), isDone: Bool = false) {
+//    var taskToDos: [TaskToDo]  //
+    
+    init(taskName: String, uuid: UUID = UUID(), isDone: Bool = false, tasksToDo: [TaskToDo] = []) {
         self.taskName = taskName
         self.uuid = uuid
         self.isDone = isDone
+        self.tasksToDo = tasksToDo
     }
 }
 // MARK: - Extension
