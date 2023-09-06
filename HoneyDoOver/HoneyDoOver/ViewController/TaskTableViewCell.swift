@@ -18,7 +18,7 @@ class TaskTableViewCell: UITableViewCell {
     // MARK: - Outlets
     @IBOutlet weak var taskToDoButton: UIButton!
     @IBOutlet weak var taskToDoLabel: UILabel!
-    @IBOutlet weak var countLabel: UILabel!
+    @IBOutlet weak var countLabel: UILabel! // for the number in each cell
     
     // MARK: - Properties
     weak var delegate: TaskTableViewCellDelegate? // job opening - We make it weak to handle the memory, weak will not add to the memory. // No one has been hired yet, still need to assign the delegate. step 2

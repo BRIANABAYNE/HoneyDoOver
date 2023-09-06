@@ -33,8 +33,10 @@ class TaskTableViewController: UITableViewController {
     // MARK: - Actions
     
     @IBAction func taskButtonTapped(_ sender: Any) {
-        guard let task = taskTextField.text, !task.isEmpty else { return }
-        taskTextField.text = "" // will make the testfield empty again once the task has been added
+        // guarding that task will be assigned the textField.text
+        guard let task = taskTextField.text else { return }
+        taskTextField.text = "" // will make the textfield empty again once the task has been added
+        // Calling taskController.shared instance . my creatTask function and plugging in the constant I created on 37
         TaskController.shared.createTask(taskName: task)
         self.tableView.reloadData()
     }
@@ -42,12 +44,13 @@ class TaskTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // calling taskController.shared instance. mormonTaks that is an array of TasktoDo that = []. count - will return how many taks have be created in the tableview
         return TaskController.shared.mormonTasks.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "honeyCell", for: indexPath) as? TaskTableViewCell else {return UITableViewCell()}
-        
+        // asking for my custom cell else return an basic b
         let chore = TaskController.shared.mormonTasks[indexPath.row]
         cell.toDoTask = chore
         cell.delegate = self // assigning the task Step 4 - Hiring the employee
@@ -102,7 +105,7 @@ extension TaskTableViewController: TaskTableViewCellDelegate {
         let task = TaskController.shared.mormonTasks[indexPath.row]
         TaskController.shared.toggleIsCompleted(taskToDo: task)
         cell.toDoTask = task
-        presentNewMessageAlert()
-        self.tableView.reloadData()
+        presentNewMessageAlert() // calling the alert
+        self.tableView.reloadData() // Need this becsue if something is delete, I will need to tabelview to reload data 
     }
 }
