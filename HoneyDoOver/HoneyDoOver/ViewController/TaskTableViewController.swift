@@ -80,7 +80,6 @@ class TaskTableViewController: UITableViewController {
         print("Action Taken: Dissmiss") // .default = blue // .destructive = red
         let yesAction = UIAlertAction(title: "Delete Task", style: .destructive) { _ in
             print("Action Taken: Delete List")
-            guard let indexPath = self.tableView.indexPathForSelectedRow else { return }
             // I tried to get this code working for the delete but it kept saying that task was nil. I didn't see why it wasn't working.
 //            guard let task = self.taskToDo else {return }
 //            TaskController.shared.deleteTask(doDelete: task)
