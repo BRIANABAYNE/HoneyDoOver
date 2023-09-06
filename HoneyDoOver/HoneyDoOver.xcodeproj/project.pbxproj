@@ -69,8 +69,8 @@
 			isa = PBXGroup;
 			children = (
 				3AA2FAFA2A916D6200DC74B0 /* Model */,
-				3A857C172A915DA200113387 /* HoneyToDo */,
-				3A857C122A915C9900113387 /* HoneyDo */,
+				3A857C172A915DA200113387 /* ModelController */,
+				3A857C122A915C9900113387 /* ViewController */,
 				3A857C112A9157F800113387 /* SupportingFiles */,
 				3A857C032A9156E500113387 /* Main.storyboard */,
 				3A857C062A9156E600113387 /* Assets.xcassets */,
@@ -89,23 +89,23 @@
 			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
-		3A857C122A915C9900113387 /* HoneyDo */ = {
+		3A857C122A915C9900113387 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
 				3A857C132A915D2E00113387 /* TaskTableViewController.swift */,
 				3A857C152A915D4E00113387 /* TaskTableViewCell.swift */,
+				3A857C1A2A915DD900113387 /* TaskToDoTableViewController.swift */,
+				3A857C182A915DBC00113387 /* TaskToDoTableViewCell.swift */,
 			);
-			path = HoneyDo;
+			path = ViewController;
 			sourceTree = "<group>";
 		};
-		3A857C172A915DA200113387 /* HoneyToDo */ = {
+		3A857C172A915DA200113387 /* ModelController */ = {
 			isa = PBXGroup;
 			children = (
-				3A857C182A915DBC00113387 /* TaskToDoTableViewCell.swift */,
-				3A857C1A2A915DD900113387 /* TaskToDoTableViewController.swift */,
 				3A560F3B2AA030320056A7ED /* TaskController.swift */,
 			);
-			path = HoneyToDo;
+			path = ModelController;
 			sourceTree = "<group>";
 		};
 		3AA2FAFA2A916D6200DC74B0 /* Model */ = {

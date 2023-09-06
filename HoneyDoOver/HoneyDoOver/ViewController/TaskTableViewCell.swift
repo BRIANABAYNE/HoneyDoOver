@@ -16,7 +16,6 @@ protocol TaskTableViewCellDelegate: AnyObject { // Telling the protocol what it'
 class TaskTableViewCell: UITableViewCell {
 
     // MARK: - Outlets
-    
     @IBOutlet weak var taskToDoButton: UIButton!
     @IBOutlet weak var taskToDoLabel: UILabel!
     @IBOutlet weak var countLabel: UILabel!
@@ -34,20 +33,17 @@ class TaskTableViewCell: UITableViewCell {
     // MARK: - Actions
     @IBAction func taskToDoButtonTapped(_ sender: Any) {
         delegate?.taskButtonTapped(cell: self) // step 3 - calling the delegate
-        
     }
     
   // MARK: - Functions
-    
-  
     func updateUIFirstScreen() {
-        
         // Making sure I have a task
         guard let task = toDoTask else { return }
+        // using countlabel.text to display the number of items in that cell by the disclosure Indicator
         countLabel.text = "\(task.taskToDos.count)"
         // the lable. text is assigned task. taskToDoName - taskToDoName is my model object 
         taskToDoLabel.text = task.taskToDoName
-                                  // true - // false
+                                  // true - // false / These are the system names that xcode provides me for when Is filled and when it's not. 
         let image = task.isFinished ? "moon.fill" : "moon"
         taskToDoButton.setImage(UIImage(systemName: image), for: .normal)
     }

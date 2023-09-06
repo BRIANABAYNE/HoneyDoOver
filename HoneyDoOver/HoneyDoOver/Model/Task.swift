@@ -11,12 +11,11 @@ class Task: Codable {
     // adopting codeable for JSON persit.
     
     var taskName: String // task
-    let uuid: UUID // unique value - compaire to task to make sure they are the same
+    let uuid: UUID // unique value - compaire to a task to make sure they are the same
     var isDone: Bool // for toggle
-    var tasksToDo: [TaskToDo]
-    // initizing the class Task, Assiging UUID and idDone with their values.
-//    var taskToDos: [TaskToDo]  //
-    
+    var tasksToDo: [TaskToDo] // using for the Disclosure Indicator to display the number of items in the cell.
+   
+    // initizing the class Task, Assiging UUID,  idDone with their values, along with TaskToDo
     init(taskName: String, uuid: UUID = UUID(), isDone: Bool = false, tasksToDo: [TaskToDo] = []) {
         self.taskName = taskName
         self.uuid = uuid

@@ -8,16 +8,14 @@
 import UIKit
 
 class TaskTableViewController: UITableViewController {
-
+// Adding the button here becasue it lives on the tableview no the cell.
     // MARK: - Outlets
     @IBOutlet weak var taskTextField: UITextField!
     
     // MARK: - Properties
-    var task: Task?
+   
     var taskToDo: TaskToDo?
-    
-    var data = [TaskToDo]()
-    
+
     // MARK: - LifeCycles
     // viewDidLoad will only happen when the app launches
     override func viewDidLoad() {
@@ -26,7 +24,7 @@ class TaskTableViewController: UITableViewController {
         title = "HoneyDo" // title
     }
     
-  //  I am adding view will appear + tableview reload data becasue the viewdid load only runs when the app launches and we need the tableview to reload our data once we have created a task. This action happens when the app is still open meaning that viewDidLoad wont trigger again.
+  //  I am adding view will appear + tableview reload data becasue the viewdid load only runs when the app launches and I need the tableview to reload our data once the user has created a task. This action happens when the app is still open meaning that viewDidLoad wont trigger again.
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tableView.reloadData()
@@ -36,7 +34,7 @@ class TaskTableViewController: UITableViewController {
     
     @IBAction func taskButtonTapped(_ sender: Any) {
         guard let task = taskTextField.text, !task.isEmpty else { return }
-        taskTextField.text = ""
+        taskTextField.text = "" // will make the testfield empty again once the task has been added
         TaskController.shared.createTask(taskName: task)
         self.tableView.reloadData()
     }
@@ -75,37 +73,25 @@ class TaskTableViewController: UITableViewController {
         let dadTask = TaskController.shared.mormonTasks[indexPath.row]
         destinationVC.taskToDo = dadTask
     }
-
     
     func presentNewMessageAlert() {
         let alertController = UIAlertController(title: "All Done?" , message: "Would you like to delete this Task?", preferredStyle: .alert)
         let noAction = UIAlertAction(title: "Dismiss", style: .default)
-        print("Action Taken: Dissmiss") // .default = blue
-     //   alertController.addAction(noAction) // .destructive = red
+        print("Action Taken: Dissmiss") // .default = blue // .destructive = red
         let yesAction = UIAlertAction(title: "Delete Task", style: .destructive) { _ in
             print("Action Taken: Delete List")
             guard let indexPath = self.tableView.indexPathForSelectedRow else { return }
-//            let task = self.data[indexPath.row]
-            self.data.remove(at: indexPath.row)
-            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            // I tried to get this code working for the delete but it kept saying that task was nil. I didn't see why it wasn't working.
 //            guard let task = self.taskToDo else {return }
 //            TaskController.shared.deleteTask(doDelete: task)
-           // alertController.addAction(yesAction)
             self.tableView.reloadData()
         }
-//
-//                     self.viewModel.toggleIsDone(honeyDo: honeyDo) // will toggle
-                   // cell.updateUI(honeyDo: honeyDo) // relfect what the cell should display now
-//                        self.tableView.reloadData()
-//
 
             alertController.addAction(noAction)
             alertController.addAction(yesAction)
             self.present(alertController, animated: true)
             
         }
-    
-        
     }
 // end of VC
 
@@ -114,12 +100,10 @@ class TaskTableViewController: UITableViewController {
 extension TaskTableViewController: TaskTableViewCellDelegate {
     func taskButtonTapped(cell: TaskTableViewCell) { // second place to hit in the data task for the protocol + delegate
      guard let indexPath = tableView.indexPath(for: cell) else { return }
-//        let task = self.task else {return}
         let task = TaskController.shared.mormonTasks[indexPath.row]
         TaskController.shared.toggleIsCompleted(taskToDo: task)
         cell.toDoTask = task
         presentNewMessageAlert()
         self.tableView.reloadData()
-    
     }
 }

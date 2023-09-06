@@ -78,9 +78,10 @@ class TaskToDoTableViewController: UITableViewController {
         alertController.addAction(yesAction)
         self.present(alertController, animated: true)
     }
-    
+    // function for when all toggle has been tapped
     func allTaskDone() {
         guard let toDoTask = taskToDo else { return }
+        // 4 loop
         for task in toDoTask.taskToDos {
             if task.isDone == false {
                 return
@@ -99,7 +100,7 @@ extension TaskToDoTableViewController: TaskToDoTableViewCellDelegate {
         let taskToDo = self.taskToDo else { return }
       let task = taskToDo.taskToDos[indexPath.row]
         TaskController().toggleTaskToFinish(for: task)
-        allTaskDone()
+        allTaskDone() 
         self.tableView.reloadData()
     }
 }
