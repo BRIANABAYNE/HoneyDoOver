@@ -77,15 +77,15 @@ class TaskTableViewController: UITableViewController {
         destinationVC.taskToDo = dadTask
     }
     
-    func presentNewMessageAlert() {
+    func presentNewMessageAlert(task: TaskToDo) {
         let alertController = UIAlertController(title: "All Done?" , message: "Would you like to delete this Task?", preferredStyle: .alert)
         let noAction = UIAlertAction(title: "Dismiss", style: .default)
         print("Action Taken: Dissmiss") // .default = blue // .destructive = red
         let yesAction = UIAlertAction(title: "Delete Task", style: .destructive) { _ in
             print("Action Taken: Delete List")
-            // I tried to get this code working for the delete but it kept saying that task was nil. I didn't see why it wasn't working.
-//            guard let task = self.taskToDo else {return }
-//            TaskController.shared.deleteTask(doDelete: task)
+         
+            guard let task = self.taskToDo else {return }
+            TaskController.shared.deleteTask(doDelete: task)
             self.tableView.reloadData()
         }
 
@@ -105,7 +105,7 @@ extension TaskTableViewController: TaskTableViewCellDelegate {
         let task = TaskController.shared.mormonTasks[indexPath.row]
         TaskController.shared.toggleIsCompleted(taskToDo: task)
         cell.toDoTask = task
-        presentNewMessageAlert() // calling the alert
+        presentNewMessageAlert(task: task) // calling the alert
         self.tableView.reloadData() // Need this becsue if something is delete, I will need to tabelview to reload data 
     }
 }

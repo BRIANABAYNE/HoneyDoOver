@@ -68,9 +68,9 @@ class TaskToDoTableViewController: UITableViewController {
     func presentAlertWhenAllFinished() {
         
         let alertController = UIAlertController(title: "All Done?" , message: "What do you want to do?", preferredStyle: .alert)
-        let noAction = UIAlertAction(title: "Keep HoneyDo", style: .default)
+        let noAction = UIAlertAction(title: "Keep Task", style: .default)
             print("Action Taken: Dissmiss") // .default = blue,   // .destructive = red
-        let yesAction = UIAlertAction(title: "Delete HoneyDo", style: .destructive) { _ in
+        let yesAction = UIAlertAction(title: "Delete Task", style: .destructive) { _ in
             print("Action Taken: Delete List")
             guard let dadTaskToDo = self.taskToDo else { return } // guarding that dadTaskToDo will be assigned to self(TaskToDoTableViewCotroller) . my property .tasktoDo else do nothing
             TaskController.shared.deleteTask(doDelete: dadTaskToDo) // calling taskcontroller.shared instance and my delete crud function that I create and deleting and plugging in the constatnt.
