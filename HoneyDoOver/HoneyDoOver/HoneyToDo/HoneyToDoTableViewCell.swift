@@ -7,17 +7,44 @@
 
 import UIKit
 
+
+
+// MARK: - Protocol
+protocol HoneyToDoTableViewCellDelegate: AnyObject {
+    func honeyToDoSwitch(cell:HoneyToDoTableViewCell)
+}
+
 class HoneyToDoTableViewCell: UITableViewCell {
+
+    
+    // MARK: - Outlets
+    
+    @IBOutlet weak var honeyToDoToggle: UISwitch!
+    @IBOutlet weak var honeyToDoLabel: UILabel!
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    // MARK: - Properties
+    weak var delegate: HoneyToDoTableViewCellDelegate?
+    
 
-        // Configure the view for the selected state
+    // MARK: - Functions
+    func updateUI(honeyToDo: HoneyToDo) {
+        honeyToDoToggle.isOn = honeyToDo.isFinished
+        honeyToDoLabel.text = honeyToDo.honeyToDo
     }
+    
+    
+    // MARK: - Actions
+    
+    
+    @IBAction func honeyToDoToggleSwitched(_ sender: Any) {
+        delegate?.honeyToDoSwitch(cell: self)
+    }
+
 
 }

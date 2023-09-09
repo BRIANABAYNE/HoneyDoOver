@@ -33,25 +33,23 @@ class HoneyToDoTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.honeyToDos.count
         
     }
     
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "honeyToDo", for: indexPath) as? HoneyToDoTableViewCell
-        else { return UITableViewCell() }
+       guard let cell = tableView.dequeueReusableCell(withIdentifier: "honeyToDo", for: indexPath) as?
+        HoneyToDoTableViewCell else { return UITableViewCell() }
         
         
         let honeyToDo = viewModel.honeyToDos[indexPath.row]
         cell.updateUI(honeyToDo: honeyToDo)
+        cell.delegate = self
         
         return cell
     }
-    
-    
+
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {

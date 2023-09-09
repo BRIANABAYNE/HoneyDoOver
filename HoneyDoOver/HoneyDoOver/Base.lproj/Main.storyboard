@@ -28,6 +28,9 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="onTintColor" red="0.91376709938049316" green="0.32961320877075195" blue="0.84349352121353149" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="thumbTintColor" red="0.75602632761001587" green="0.69386845827102661" blue="0.93194001913070679" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <connections>
+                                                <action selector="honeyDoToggleSwitched:" destination="bnv-5d-3eY" eventType="valueChanged" id="zxt-sb-6k5"/>
+                                            </connections>
                                         </switch>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bAx-ny-kLs">
                                             <rect key="frame" x="274" y="39" width="42" height="21"/>
@@ -38,6 +41,10 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="honeyDoLabel" destination="bAx-ny-kLs" id="5HA-B8-UFp"/>
+                                    <outlet property="honeyDoToggle" destination="7iT-ec-udP" id="z45-Sw-vGG"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -146,6 +153,9 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="onTintColor" red="0.9137670994" green="0.3296132088" blue="0.84349352119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="thumbTintColor" red="0.75602632759999999" green="0.69386845829999999" blue="0.93194001910000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <connections>
+                                                <action selector="honeyToDoToggleSwitched:" destination="8ch-DU-Ny0" eventType="valueChanged" id="j1y-91-7bq"/>
+                                            </connections>
                                         </switch>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m7r-51-u9l">
                                             <rect key="frame" x="274" y="39" width="42" height="21"/>
@@ -156,6 +166,10 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="honeyToDoLabel" destination="m7r-51-u9l" id="c7H-LE-hZ1"/>
+                                    <outlet property="honeyToDoToggle" destination="D45-lF-9br" id="kMR-yp-o4h"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
