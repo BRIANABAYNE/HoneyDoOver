@@ -7,11 +7,17 @@
 
 import Foundation
 
-struct HoneyToDo {
+class HoneyToDo: Codable {
     
     let honeyToDo: String
-    let uuid: UUID = UUID()
-    let isFinished: Bool = false
+    let uuid: UUID
+    var isFinished: Bool
+    
+    init(honeyToDo: String, isFinished: Bool = false, uuid: UUID = UUID() ) {
+        self.honeyToDo = honeyToDo
+        self.uuid = uuid
+        self.isFinished = isFinished
+    }
 }
 
 // MARK: - Extenstion

@@ -8,82 +8,122 @@
 import UIKit
 
 class HoneyDoTableViewController: UITableViewController {
-
+    
+    
+    // MARK: - Outlets
+    
+    @IBOutlet weak var honeyDoTextField: UITextField!
+    
+    
+    // MARK: - Properties
+    
+    var viewModel: HoneyDoViewModel!
+    
+    
+    // MARK: - LifeCycles
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        viewModel = HoneyDoViewModel()
+        
     }
 
+    
+    // MARK: - Actions
+    
+    @IBAction func honeyDoButtonTapped(_ sender: Any) {
+        // retriving the data
+        guard let honeyDo = honeyDoTextField.text else  { return }
+        viewModel.create(honeyDo: honeyDo)
+        tableView.reloadData() // this will call numberOfRows and then cellForRowAt
+    }
+    
+    
     // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
+    
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return viewModel.honeyDos.count
     }
-
-    /*
+    
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "honeyCell", for: indexPath) as? HoneyDoTableViewCell
+        else { return UITableViewCell() }
+        
+        let honeyDo = viewModel.honeyDos[indexPath.row]
+        cell.updateUI(honeydo:honeyDo)
+        
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
+    
+    // Swipe to delete
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+    
+    
+    
+    // MARK: - Functions
+    func update() {
+        
+        honeyDoTextField.text = viewModel.honeyDos.honeyDo
+        
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+    
+    @objc func markAllDone() {
+        viewModel.honeyDos.isDone
+        tableView.reloadData()
     }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    @objc func markAllNotDone() {
+        viewModel.honeyDos.isDone
+        tableView.reloadData()
     }
-    */
-
+    
+    func notificationCenter() {
+        NotificationCenter.default.addObserver(self, selector: #selector(markAllDone), name: Constants.Notifications.markAllDone, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(markAllNotDone), name: Constants.Notifications.markAllDone, object: nil)
+        
+    }
+    
+    func presentNewMessageAlert() {
+        let alertController = UIAlertController(title: "All Done?" , message: "Would you like to delete this Honey-Do?", preferredStyle: .alert)
+        let noAction = UIAlertAction(title: "Dismiss", style: .default) { _ in
+            print("Action Taken: Dissmiss") // .default = blue
+        }
+        alertController.addAction(noAction) // .destructive = red
+        let yesAction = UIAlertAction(title: "Delete List", style: .destructive) { _ in
+            print("Action Taken: Delete List")
+            #warning("Complete this")/// Finish this
+        }
+        
+        alertController.addAction(noAction)
+        alertController.addAction(yesAction)
+        self.present(alertController, animated: true)
+        
+    }
+    
 }
+
+// MARK: - Extensions - Extending the tableview controller, do the delegate. The employee doing the task that they were hired to do.
+extension HoneyDoTableViewController: TaskTableViewCellDelegate {
+    func taskButtonTapped(cell: HoneyDoTableViewCell) { // second place to hit in the data task for the protocol + delegate
+       guard let indexPath = tableView.indexPath(for: cell) else { return }
+        let honeyDo = viewModel.honeyDos[indexPath.row]
+        viewModel.honeyDos.toggleIsDone(honeyDo: honeyDo)
+        viewModel.toggleIsDone(honeyDo: honeyDo)
+        cell.updateUI(honeyDo.honeyDo)
+    }
+    
+    
+    
+    
+    
+    
+    
+} // end of VC

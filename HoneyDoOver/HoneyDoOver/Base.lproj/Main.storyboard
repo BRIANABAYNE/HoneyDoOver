@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="108" id="bnv-5d-3eY" customClass="HoneyDoTableViewCell" customModule="HoneyDoOver" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="honeyCell" rowHeight="108" id="bnv-5d-3eY" customClass="HoneyDoTableViewCell" customModule="HoneyDoOver" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="50" width="393" height="108"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bnv-5d-3eY" id="xyl-Nj-FnN">
@@ -48,11 +48,14 @@
                     <navigationItem key="navigationItem" id="3pn-AC-dBx">
                         <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" style="plain" id="8sO-GG-9rD">
-                            <textField key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="wlt-vT-1zw">
-                                <rect key="frame" x="16" y="5" width="87" height="34"/>
+                            <textField key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="HoneyDo" textAlignment="natural" minimumFontSize="17" id="wlt-vT-1zw">
+                                <rect key="frame" x="16" y="5" width="88" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="honeyToDoTextField:" destination="ma1-MK-xm6" eventType="editingDidEnd" id="RTc-my-xxp"/>
+                                </connections>
                             </textField>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="UsC-IL-1qj">
@@ -61,11 +64,21 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                <connections>
+                                    <action selector="honeyDoButtonTapped:" destination="uTR-lk-8FZ" eventType="touchUpInside" id="i3B-Tf-CEd"/>
+                                </connections>
                             </button>
+                            <connections>
+                                <action selector="honeyDoButtonTapped:" destination="ma1-MK-xm6" id="wkK-9G-Jmw"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="honeyDoTextField" destination="wlt-vT-1zw" id="vnS-SM-tIn"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cc9-it-fFQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="ma1-MK-xm6" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-91" y="-175"/>
         </scene>
@@ -114,11 +127,14 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                            <connections>
+                                                <action selector="honeyToDoButtonTapped:" destination="rC7-jo-rZm" eventType="touchUpInside" id="2gh-OA-M4K"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="108" id="8ch-DU-Ny0" customClass="HoneyToDoTableViewCell" customModule="HoneyDoOver" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="honeyToDo" rowHeight="108" id="8ch-DU-Ny0" customClass="HoneyToDoTableViewCell" customModule="HoneyDoOver" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="93.666667938232422" width="393" height="108"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8ch-DU-Ny0" id="4uv-Pm-wgO">
@@ -166,6 +182,9 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="honeyToDoTextField" destination="FNc-xx-Kfr" id="Cj1-Fb-ECe"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DTk-o4-ViB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
