@@ -7,28 +7,26 @@
 
 import Foundation
 
-
 class TaskController {
     
     // MARK: - Properties 
-    // SST
+   
     static let shared = TaskController()
-    // Singlton
+  
     var mormonTasks: [TaskToDo] = []
     
-   // - init for the class + Calling the load for JSON
     init() {
         load()
     }
     
     // MARK: - Crud Functions for Task
-      // create
+   
     func createTask(taskName: String) {
         let taskToDo = TaskToDo(taskToDoName: taskName)
         mormonTasks.append(taskToDo)
         save()
     }
-    // Delete -
+   
     func deleteTask(doDelete: TaskToDo) {
         guard let path = mormonTasks.firstIndex(of: doDelete) else { return }
         mormonTasks.remove(at: path)
@@ -60,7 +58,7 @@ class TaskController {
     }
   
     // MARK: - Persistence
-    // writing
+   
     func save() {
         guard let url = fileURL else {return}
         do {
